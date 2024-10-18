@@ -1,26 +1,23 @@
 package com.d4ffi.tarotCard;
 
+import com.d4ffi.Okiro;
 import com.moandjiezana.toml.Toml;
 import net.fabricmc.loader.api.FabricLoader;
 
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.Arrays;
-import java.util.LinkedHashMap;
-import java.util.Map;
 
 public class TarotConfigManager {
 
     private static final String CONFIG_FILE_NAME = "okiro_config.toml";
-    private Toml config;
     private static FileWriter fileWriter;
 
     public TarotConfigManager() {
         try {
             loadconfig();
         } catch (IOException e) {
-            e.printStackTrace();
+            Okiro.LOGGER.error("Error loading config file || {}", e.getMessage());
         }
     }
 
@@ -31,11 +28,11 @@ public class TarotConfigManager {
             try {
                 configFile.createNewFile();
             } catch (Exception e) {
-                e.printStackTrace();
+                Okiro.LOGGER.error("Error creating config file || {}", e.getMessage());
             }
         }
 
-        config = new Toml().read(configFile);
+        Toml config = new Toml().read(configFile);
 
         if (config.isEmpty()) {
             writeDefaultConfig(configFile);
