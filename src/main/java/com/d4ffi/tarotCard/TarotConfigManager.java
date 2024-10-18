@@ -7,17 +7,19 @@ import net.fabricmc.loader.api.FabricLoader;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.List;
 
 public class TarotConfigManager {
 
     private static final String CONFIG_FILE_NAME = "okiro_config.toml";
+    private Toml config;
     private static FileWriter fileWriter;
 
     public TarotConfigManager() {
         try {
             loadconfig();
         } catch (IOException e) {
-            Okiro.LOGGER.error("Error loading config file || {}", e.getMessage());
+            Okiro.LOGGER.info("Error loading config file || {}", e.getMessage());
         }
     }
 
@@ -28,11 +30,11 @@ public class TarotConfigManager {
             try {
                 configFile.createNewFile();
             } catch (Exception e) {
-                Okiro.LOGGER.error("Error creating config file || {}", e.getMessage());
+                Okiro.LOGGER.info("Error creating config file || {}", e.getMessage());
             }
         }
 
-        Toml config = new Toml().read(configFile);
+        config = new Toml().read(configFile);
 
         if (config.isEmpty()) {
             writeDefaultConfig(configFile);
@@ -42,6 +44,7 @@ public class TarotConfigManager {
     public static void writeDefaultConfig(File configFile) throws IOException {
         try (FileWriter writer = new FileWriter(configFile)) {
             writeCommentedConfig(writer, "Config file for okiro Mod :D", null);
+            writeCommentedConfig(writer, "If you are reading this, you are awesome!", null);
             writer.write("\n");
 
             writeCommentedConfig(writer,
@@ -52,7 +55,7 @@ public class TarotConfigManager {
             writeCommentedConfig(writer,
                     "Only the following cards will be active in the game",
                     "by default all 22 cards are active",
-                    "activeCards = [\"thefool\",\"themagician\",\"thehighpriestess\",\"theempress\",\"theemperor\",\"thehierophant\",\"theloovers\",\"thechariot\",\"strength\",\"thehermit\",\"wheeloffortune\",\"justice\",\"thehangedman\",\"death\",\"temperance\",\"theDevil\",\"thetower\",\"thestar\",\"themoon\",\"thesun\",\"judgement\",\"theworld\"]");
+                    "activeCards = [\"thefool\",\"themagician\",\"thehighpriestess\",\"theempress\",\"theemperor\",\"thehierophant\",\"thelovers\",\"thechariot\",\"strength\",\"thehermit\",\"wheeloffortune\",\"justice\",\"thehangedman\",\"death\",\"temperance\",\"thedevil\",\"thetower\",\"thestar\",\"themoon\",\"thesun\",\"judgement\",\"theworld\"]");
 
             writeCommentedConfig(writer,
                     "Amount of time that The Fool can copy another card ability",
@@ -134,9 +137,10 @@ public class TarotConfigManager {
                     "Sets the cooldown of the time stop",
                     "by default is set to 3600",
                     "theWorldTimeStopCooldown = 3600");
+
+            writeCommentedConfig(writer, "Finally special thanks to all Fabric community <3", null);
         }
     }
-
     private static void writeCommentedConfig(FileWriter writer, String... lines) throws IOException {
         for (String line : lines) {
             if (line == null) {
@@ -148,5 +152,13 @@ public class TarotConfigManager {
             }
         }
         writer.write("\n");
+    }
+
+    public int getUpdateTicks() {
+        return config.getLong("updateTicks", 20L).intValue();
+    }
+
+    public List<Object> getActiveCards() {
+        return config.getList("activeCards");
     }
 }
