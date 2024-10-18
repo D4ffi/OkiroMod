@@ -11,6 +11,7 @@ import org.slf4j.LoggerFactory;
 import java.nio.file.Path;
 
 public class Okiro implements ModInitializer {
+
 	public static final String MOD_ID = "okiro";
 
 	// This logger is used to write text to the console and the log file.
@@ -24,6 +25,7 @@ public class Okiro implements ModInitializer {
 		// However, some things (like resources) may still be uninitialized.
 		// Proceed with mild caution.
 
+		TarotConfigManager configManager = new TarotConfigManager();
 		OkiroItem.registerItems();
 		LOGGER.info("Hello Fabric world!");
 	}

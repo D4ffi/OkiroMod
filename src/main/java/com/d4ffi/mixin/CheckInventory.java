@@ -21,11 +21,7 @@ public class CheckInventory {
     @Inject(at = @At("HEAD"), method = "tick")
     public void checkInventory(CallbackInfo ci) {
         if (serverSide){
-            if (player.getInventory().contains(OkiroItem.STAR.getDefaultStack())){
-                //activate card
-                Star star = (Star) OkiroItem.STAR;
-                star.activateCard(player);
-            }
+
         }
     }
 }
