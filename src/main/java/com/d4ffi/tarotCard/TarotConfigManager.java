@@ -161,4 +161,8 @@ public class TarotConfigManager {
     public List<Object> getActiveCards() {
         return config.getList("activeCards");
     }
+
+    public float getTemperanceMaxHealth() {
+        return config.getLong("temperanceMaxHealth", 20L);
+    }
 }

@@ -58,4 +58,9 @@ public class TarotCardManager extends Item implements ITarotCard {
 
     }
 
+    @Override
+    public void deactivateCard(PlayerEntity player) {
+
+    }
+
 }

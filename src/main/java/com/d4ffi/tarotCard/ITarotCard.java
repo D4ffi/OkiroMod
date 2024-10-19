@@ -12,5 +12,6 @@ public interface ITarotCard {
     public boolean isCardActive(ItemStack stack);
     public void setCardActive(boolean active);
     public void activateCard(PlayerEntity player);
+    public void deactivateCard(PlayerEntity player);
 
 }

@@ -79,11 +79,11 @@ public class OkiroItem {
                     itemGroupCards.add(LOVERS);
                     break;
                 case "thechariot":
-                    CHARIOT = registerItem("thechariot", new Item(new FabricItemSettings()));
+                    CHARIOT = registerItem("thechariot", new Chariot(new FabricItemSettings()));
                     itemGroupCards.add(CHARIOT);
                     break;
                 case "strength":
-                    STRENGTH = registerItem("strength", new Item(new FabricItemSettings()));
+                    STRENGTH = registerItem("strength", new Strength(new FabricItemSettings()));
                     itemGroupCards.add(STRENGTH);
                     break;
                 case "thehermit":
@@ -107,7 +107,7 @@ public class OkiroItem {
                     itemGroupCards.add(DEATH);
                     break;
                 case "temperance":
-                    TEMPERANCE = registerItem("temperance", new Item(new FabricItemSettings()));
+                    TEMPERANCE = registerItem("temperance", new Temperance(new FabricItemSettings()));
                     itemGroupCards.add(TEMPERANCE);
                     break;
                 case "thedevil":
@@ -123,7 +123,7 @@ public class OkiroItem {
                     itemGroupCards.add(STAR);
                     break;
                 case "themoon":
-                    MOON = registerItem("themoon", new Item(new FabricItemSettings()));
+                    MOON = registerItem("themoon", new Moon(new FabricItemSettings()));
                     itemGroupCards.add(MOON);
                     break;
                 case "thesun":

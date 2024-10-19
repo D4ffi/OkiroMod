@@ -1,6 +1,7 @@
 package com.d4ffi.mixin;
 
 import com.d4ffi.tarotCard.IPlayerManager;
+import com.d4ffi.tarotCard.TarotCardManager;
 import com.d4ffi.tarotCard.TarotConfigManager;
 import net.minecraft.entity.player.PlayerEntity;
 import org.spongepowered.asm.mixin.Mixin;
@@ -8,6 +9,9 @@ import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Mixin(PlayerEntity.class)
 public class CheckInventory implements IPlayerManager {
@@ -22,7 +26,6 @@ public class CheckInventory implements IPlayerManager {
     int tickupdate = configManager.getUpdateTicks();
     @Unique
     int tick = 0;
-
 
     @Inject(at = @At("HEAD"), method = "tick")
     public void checkInventory(CallbackInfo ci) {
