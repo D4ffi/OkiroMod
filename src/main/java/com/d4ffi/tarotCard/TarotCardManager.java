@@ -7,11 +7,7 @@ import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.world.World;
 
-import java.util.Set;
-
-public class TarotManager extends Item implements ITarotCard {
-
-    private static final Set<Item> CARDS_IN_GAME = Set.of();
+public class TarotCardManager extends Item implements ITarotCard {
 
     private boolean changeState = false;
 
@@ -20,6 +16,7 @@ public class TarotManager extends Item implements ITarotCard {
 
         if (!user.getWorld().isClient){
             changeState = !changeState;
+            user.getMainHandStack().getOrCreateNbt().putBoolean("active", changeState);
         }
 
         return super.use(world, user, hand);
@@ -27,10 +24,10 @@ public class TarotManager extends Item implements ITarotCard {
 
     @Override
     public boolean hasGlint(ItemStack stack) {
-        return changeState;
+        return stack.getOrCreateNbt().getBoolean("active");
     }
 
-    public TarotManager(Settings settings) {
+    public TarotCardManager(Settings settings) {
         super(settings);
     }
 
@@ -50,8 +47,8 @@ public class TarotManager extends Item implements ITarotCard {
     }
 
     @Override
-    public boolean isCardActive() {
-        return false;
+    public boolean isCardActive(ItemStack stack) {
+        return hasGlint(stack);
     }
 
     @Override
@@ -63,4 +60,5 @@ public class TarotManager extends Item implements ITarotCard {
     public void activateCard(PlayerEntity player) {
 
     }
+
 }

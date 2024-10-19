@@ -1,11 +1,11 @@
 package com.d4ffi.item;
 
-import com.d4ffi.tarotCard.TarotManager;
+import com.d4ffi.tarotCard.TarotCardManager;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
 
-public class WheelOfFortune extends TarotManager {
+public class WheelOfFortune extends TarotCardManager {
 
     public WheelOfFortune(Settings settings) {
         super(settings);
