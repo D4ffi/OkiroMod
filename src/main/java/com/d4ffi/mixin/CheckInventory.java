@@ -22,7 +22,6 @@ public class CheckInventory implements IPlayerManager {
     int tickupdate = configManager.getUpdateTicks();
     @Unique
     int tick = 0;
-    @Unique
 
 
     @Inject(at = @At("HEAD"), method = "tick")

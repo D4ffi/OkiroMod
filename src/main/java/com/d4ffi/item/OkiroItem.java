@@ -3,11 +3,16 @@ package com.d4ffi.item;
 import com.d4ffi.Okiro;
 import com.d4ffi.tarotCard.TarotConfigManager;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
+import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemGroup;
+import net.minecraft.item.ItemStack;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
+import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class OkiroItem {
@@ -16,75 +21,122 @@ public class OkiroItem {
 
     static List<Object> activeCards = configManager.getActiveCards();
 
+    public static Item FOOL;
+    public static Item MAGICIAN;
+    public static Item HIGH_PRIESTESS;
+    public static Item EMPRESS;
+    public static Item EMPEROR;
+    public static Item HIEROPHANT;
+    public static Item LOVERS;
+    public static Item CHARIOT;
+    public static Item STRENGTH;
+    public static Item HERMIT;
+    public static Item WHEEL_OF_FORTUNE;
+    public static Item JUSTICE;
+    public static Item HANGED_MAN;
+    public static Item DEATH;
+    public static Item TEMPERANCE;
+    public static Item DEVIL;
+    public static Item TOWER;
+    public static Item STAR;
+    public static Item MOON;
+    public static Item SUN;
+    public static Item JUDGEMENT;
+    public static Item WORLD;
+
+    static List<Item> itemGroupCards = new ArrayList<>();
+
     public static void InstanceCards() {
         for (Object card : activeCards) {
             String cardName = card.toString();
             switch (cardName) {
                 case "thefool":
-                    registerItem("thefool", new Item(new FabricItemSettings()));
+                    FOOL = registerItem("thefool", new Item(new FabricItemSettings()));
+                    itemGroupCards.add(FOOL);
                     break;
                 case "themagician":
-                    registerItem("themagician", new Item(new FabricItemSettings()));
+                    MAGICIAN = registerItem("themagician", new Item(new FabricItemSettings()));
+                    itemGroupCards.add(MAGICIAN);
                     break;
                 case "thehighpriestess":
-                    registerItem("thehighpriestess", new Item(new FabricItemSettings()));
+                    HIGH_PRIESTESS = registerItem("thehighpriestess", new Item(new FabricItemSettings()));
+                    itemGroupCards.add(HIGH_PRIESTESS);
                     break;
                 case "theempress":
-                    registerItem("theempress", new Item(new FabricItemSettings()));
+                    EMPRESS = registerItem("theempress", new Item(new FabricItemSettings()));
+                    itemGroupCards.add(EMPRESS);
                     break;
                 case "theemperor":
-                    registerItem("theemperor", new Item(new FabricItemSettings()));
+                    EMPEROR = registerItem("theemperor", new Item(new FabricItemSettings()));
+                    itemGroupCards.add(EMPEROR);
                     break;
                 case "thehierophant":
-                    registerItem("thehierophant", new Item(new FabricItemSettings()));
+                    HIEROPHANT = registerItem("thehierophant", new Item(new FabricItemSettings()));
+                    itemGroupCards.add(HIEROPHANT);
                     break;
                 case "theloovers":
-                    registerItem("theloovers", new Item(new FabricItemSettings()));
+                    LOVERS = registerItem("theloovers", new Item(new FabricItemSettings()));
+                    itemGroupCards.add(LOVERS);
                     break;
                 case "thechariot":
-                    registerItem("thechariot", new Item(new FabricItemSettings()));
+                    CHARIOT = registerItem("thechariot", new Item(new FabricItemSettings()));
+                    itemGroupCards.add(CHARIOT);
                     break;
                 case "strength":
-                    registerItem("strength", new Item(new FabricItemSettings()));
+                    STRENGTH = registerItem("strength", new Item(new FabricItemSettings()));
+                    itemGroupCards.add(STRENGTH);
                     break;
                 case "thehermit":
-                    registerItem("thehermit", new Item(new FabricItemSettings()));
+                    HERMIT = registerItem("thehermit", new Item(new FabricItemSettings()));
+                    itemGroupCards.add(HERMIT);
                     break;
                 case "wheeloffortune":
-                    registerItem("wheeloffortune", new WheelOfFortune(new FabricItemSettings()));
+                    WHEEL_OF_FORTUNE = registerItem("wheeloffortune", new WheelOfFortune(new FabricItemSettings()));
+                    itemGroupCards.add(WHEEL_OF_FORTUNE);
                     break;
                 case "justice":
-                    registerItem("justice", new Item(new FabricItemSettings()));
+                    JUSTICE = registerItem("justice", new Item(new FabricItemSettings()));
+                    itemGroupCards.add(JUSTICE);
                     break;
                 case "thehangedman":
-                    registerItem("thehangedman", new Item(new FabricItemSettings()));
+                    HANGED_MAN = registerItem("thehangedman", new Item(new FabricItemSettings()));
+                    itemGroupCards.add(HANGED_MAN);
                     break;
                 case "death":
-                    registerItem("death", new Item(new FabricItemSettings()));
+                    DEATH = registerItem("death", new Item(new FabricItemSettings()));
+                    itemGroupCards.add(DEATH);
                     break;
                 case "temperance":
-                    registerItem("temperance", new Item(new FabricItemSettings()));
+                    TEMPERANCE = registerItem("temperance", new Item(new FabricItemSettings()));
+                    itemGroupCards.add(TEMPERANCE);
                     break;
                 case "thedevil":
-                    registerItem("thedevil", new Item(new FabricItemSettings()));
+                    DEVIL = registerItem("thedevil", new Item(new FabricItemSettings()));
+                    itemGroupCards.add(DEVIL);
                     break;
                 case "thetower":
-                    registerItem("thetower", new Item(new FabricItemSettings()));
+                    TOWER = registerItem("thetower", new Item(new FabricItemSettings()));
+                    itemGroupCards.add(TOWER);
                     break;
                 case "thestar":
-                    registerItem("thestar", new Star(new FabricItemSettings()));
+                    STAR = registerItem("thestar", new Star(new FabricItemSettings()));
+                    itemGroupCards.add(STAR);
                     break;
                 case "themoon":
-                    registerItem("themoon", new Item(new FabricItemSettings()));
+                    MOON = registerItem("themoon", new Item(new FabricItemSettings()));
+                    itemGroupCards.add(MOON);
                     break;
                 case "thesun":
-                    registerItem("thesun", new Item(new FabricItemSettings()));
+                    SUN = registerItem("thesun", new Item(new FabricItemSettings()));
+                    itemGroupCards.add(SUN);
                     break;
                 case "judgement":
-                    registerItem("judgement", new Item(new FabricItemSettings()));
+                    JUDGEMENT = registerItem("judgement", new Item(new FabricItemSettings()));
+                    itemGroupCards.add(JUDGEMENT);
                     break;
                 case "theworld":
-                    registerItem("theworld", new Item(new FabricItemSettings()));
+                    WORLD = registerItem("theworld", new Item(new FabricItemSettings()));
+                    itemGroupCards.add(WORLD);
                     break;
                 default:
                     Okiro.LOGGER.warn("Unknown card: " + cardName);
@@ -92,11 +144,34 @@ public class OkiroItem {
             }
         }
     }
-    private static Item registerItem(String name, Item item){
+
+
+    private static Item registerItem(String name, Item item) {
         return Registry.register(Registries.ITEM, new Identifier(Okiro.MOD_ID, name), item);
     }
-    public static void registerItems(){
+
+    public static void registerItems() {
         Okiro.LOGGER.info("Registering OKIRO ITEMS . . .");
         InstanceCards();
+    }
+
+    public static final ItemGroup OKIRO_CARD_GROUP = Registry.register(Registries.ITEM_GROUP,
+            new Identifier(Okiro.MOD_ID, "okiro_card_group"),
+            FabricItemGroup.builder().displayName(Text.translatable("itemGroup.okiro_card_group")).icon(() ->
+                    new ItemStack(FOOL)).entries(((displayContext, entries) -> {
+                for (Item card : itemGroupCards) {
+                    entries.add(cardWithProperties(card));
+                }
+            })).build());
+
+    public static void registerItemGroups() {
+        Okiro.LOGGER.info("Registering OKIRO ITEM GROUPS . . .");
+    }
+
+    private static ItemStack cardWithProperties(Item card){
+        ItemStack stack = new ItemStack(card);
+        stack.getOrCreateNbt().putBoolean("active", true);
+        stack.getOrCreateNbt().putInt("mode", 0);
+        return stack;
     }
 }

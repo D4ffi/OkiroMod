@@ -9,14 +9,11 @@ import net.minecraft.world.World;
 
 public class TarotCardManager extends Item implements ITarotCard {
 
-    private boolean changeState = false;
-
     @Override
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
 
         if (!user.getWorld().isClient){
-            changeState = !changeState;
-            user.getMainHandStack().getOrCreateNbt().putBoolean("active", changeState);
+            user.getMainHandStack().getOrCreateNbt().putBoolean("active", !user.getMainHandStack().getOrCreateNbt().getBoolean("active"));
         }
 
         return super.use(world, user, hand);
