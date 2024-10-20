@@ -45,7 +45,7 @@ public class AutoSmeltEvent implements PlayerBlockBreakEvents.Before {
                         world.removeBlock(blockPos, false);
                         if (blockName.contains("ore")) {
                             //add a random value of xp
-                            playerEntity.addExperience(world.random.nextInt(5) + 1);
+                            playerEntity.addExperience(world.random.nextInt(10) + 1);
                             dropSmeltedItemwithFortune(world, blockPos, autoSmeltBlocks.get(key), fortuneLevel);
                         } else {
                             dropSmeltedItem(world, blockPos, autoSmeltBlocks.get(key));
@@ -57,7 +57,7 @@ public class AutoSmeltEvent implements PlayerBlockBreakEvents.Before {
                 for (String key : autoSmeltBlocks.keySet()) {
                     if (blockName.equals(key)) {
                         world.removeBlock(blockPos, false);
-                        playerEntity.addExperience(world.random.nextInt(3) + 1);
+                        playerEntity.addExperience(world.random.nextInt(6) + 1);
                         dropSmeltedItem(world, blockPos, autoSmeltBlocks.get(key));
                         return false;
                     }

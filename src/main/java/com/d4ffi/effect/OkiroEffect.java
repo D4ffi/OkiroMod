@@ -15,6 +15,11 @@ public class OkiroEffect {
             new MoonGrace(StatusEffectCategory.BENEFICIAL, 0x00FF00)
                     .addAttributeModifier(EntityAttributes.GENERIC_MOVEMENT_SPEED,
                             "c2f5c9c0-8b7a-11eb-8dcd-0242ac130003", 0.1, EntityAttributeModifier.Operation.MULTIPLY_TOTAL));
+
+    public static final StatusEffect FREEZE = registerStatusEffects("freeze",
+            new Freeze(StatusEffectCategory.HARMFUL, 0x0000FF).addAttributeModifier(EntityAttributes.GENERIC_MOVEMENT_SPEED,
+                    "c2f5c9c0-8b7a-11eb-8dcd-0242ac130003", -0.25, EntityAttributeModifier.Operation.MULTIPLY_TOTAL));
+
     private static StatusEffect registerStatusEffects(String name, StatusEffect effect) {
         return Registry.register(Registries.STATUS_EFFECT, new Identifier(Okiro.MOD_ID, name), effect);
     }

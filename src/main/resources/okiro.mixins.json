@@ -4,9 +4,13 @@
 	"compatibilityLevel": "JAVA_21",
 	"mixins": [
 		"CheckInventory",
-		"ExampleMixin"
+		"ExampleMixin",
+		"WalkOnPowderSnowMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1
-	}
+	},
+	"client": [
+		"InGameHudMixin"
+	]
 }

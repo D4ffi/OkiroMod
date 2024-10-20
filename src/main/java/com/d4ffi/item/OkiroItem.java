@@ -71,7 +71,7 @@ public class OkiroItem {
                     itemGroupCards.add(EMPEROR);
                     break;
                 case "thehierophant":
-                    HIEROPHANT = registerItem("thehierophant", new Item(new FabricItemSettings()));
+                    HIEROPHANT = registerItem("thehierophant", new Hierophant(new FabricItemSettings()));
                     itemGroupCards.add(HIEROPHANT);
                     break;
                 case "theloovers":

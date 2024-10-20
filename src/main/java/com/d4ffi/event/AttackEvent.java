@@ -1,6 +1,9 @@
 package com.d4ffi.event;
 
+import com.d4ffi.effect.Freeze;
+import com.d4ffi.effect.OkiroEffect;
 import com.d4ffi.item.Death;
+import com.d4ffi.item.Hierophant;
 import com.d4ffi.item.Magician;
 import com.d4ffi.tarotCard.IPlayerManager;
 import net.fabricmc.fabric.api.event.player.AttackEntityCallback;
@@ -23,6 +26,7 @@ public class AttackEvent implements AttackEntityCallback {
             IPlayerManager moddedPlayer = (IPlayerManager) playerEntity;
             deathEffect(moddedPlayer, entity);
             magicianEffect(moddedPlayer, entity);
+            hierophantEffect(moddedPlayer, entity);
         }
 
         return ActionResult.PASS;
@@ -43,4 +47,14 @@ public class AttackEvent implements AttackEntityCallback {
             }
         }
     }
+
+    private void hierophantEffect(IPlayerManager player, Entity entity) {
+        if (player.getActiveCard(Hierophant.class)) {
+            if (entity instanceof LivingEntity) {
+                ((LivingEntity) entity).addStatusEffect(new StatusEffectInstance(OkiroEffect.FREEZE, 100, 0));
+            }
+        }
+    }
+
+
 }
