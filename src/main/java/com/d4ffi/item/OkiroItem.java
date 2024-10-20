@@ -55,7 +55,7 @@ public class OkiroItem {
                     itemGroupCards.add(FOOL);
                     break;
                 case "themagician":
-                    MAGICIAN = registerItem("themagician", new Item(new FabricItemSettings()));
+                    MAGICIAN = registerItem("themagician", new Magician(new FabricItemSettings()));
                     itemGroupCards.add(MAGICIAN);
                     break;
                 case "thehighpriestess":
@@ -75,7 +75,7 @@ public class OkiroItem {
                     itemGroupCards.add(HIEROPHANT);
                     break;
                 case "theloovers":
-                    LOVERS = registerItem("theloovers", new Item(new FabricItemSettings()));
+                    LOVERS = registerItem("thelovers", new Item(new FabricItemSettings()));
                     itemGroupCards.add(LOVERS);
                     break;
                 case "thechariot":
@@ -127,7 +127,7 @@ public class OkiroItem {
                     itemGroupCards.add(MOON);
                     break;
                 case "thesun":
-                    SUN = registerItem("thesun", new Item(new FabricItemSettings()));
+                    SUN = registerItem("thesun", new Sun(new FabricItemSettings()));
                     itemGroupCards.add(SUN);
                     break;
                 case "judgement":

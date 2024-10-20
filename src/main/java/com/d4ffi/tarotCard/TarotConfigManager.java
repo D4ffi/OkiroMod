@@ -7,6 +7,7 @@ import net.fabricmc.loader.api.FabricLoader;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
 
 public class TarotConfigManager {
@@ -14,6 +15,7 @@ public class TarotConfigManager {
     private static final String CONFIG_FILE_NAME = "okiro_config.toml";
     private Toml config;
     private static FileWriter fileWriter;
+    private static final HashMap<String, String> autoSmeltBlocks = new HashMap<>();
 
     public TarotConfigManager() {
         try {
@@ -141,6 +143,7 @@ public class TarotConfigManager {
             writeCommentedConfig(writer, "Finally special thanks to all Fabric community <3", null);
         }
     }
+
     private static void writeCommentedConfig(FileWriter writer, String... lines) throws IOException {
         for (String line : lines) {
             if (line == null) {
@@ -164,5 +167,39 @@ public class TarotConfigManager {
 
     public float getTemperanceMaxHealth() {
         return config.getLong("temperanceMaxHealth", 20L);
+    }
+
+    public void initAutoSmeltBlocks() {
+        autoSmeltBlocks.put("minecraft:iron_ore", "minecraft:iron_ingot");
+        autoSmeltBlocks.put("minecraft:gold_ore", "minecraft:gold_ingot");
+        autoSmeltBlocks.put("minecraft:copper_ore", "minecraft:copper_ingot");
+
+        autoSmeltBlocks.put("minecraft:nether_gold_ore", "minecraft:gold_ingot");
+
+        autoSmeltBlocks.put("minecraft:deepslate_iron_ore", "minecraft:iron_ingot");
+        autoSmeltBlocks.put("minecraft:deepslate_gold_ore", "minecraft:gold_ingot");
+        autoSmeltBlocks.put("minecraft:deepslate_copper_ore", "minecraft:copper_ingot");
+
+        autoSmeltBlocks.put("minecraft:stone", "minecraft:stone");
+        autoSmeltBlocks.put("minecraft:cobblestone", "minecraft:stone");
+        autoSmeltBlocks.put("minecraft:deepslate", "minecraft:deepslate");
+        autoSmeltBlocks.put("minecraft:cobbled_deepslate", "minecraft:deepslate");
+
+        autoSmeltBlocks.put("minecraft:raw_iron_block", "minecraft:iron_block");
+        autoSmeltBlocks.put("minecraft:raw_gold_block", "minecraft:gold_block");
+        autoSmeltBlocks.put("minecraft:raw_copper_block", "minecraft:copper_block");
+
+        autoSmeltBlocks.put("minecraft:oak_log", "minecraft:charcoal");
+        autoSmeltBlocks.put("minecraft:spruce_log", "minecraft:charcoal");
+        autoSmeltBlocks.put("minecraft:birch_log", "minecraft:charcoal");
+        autoSmeltBlocks.put("minecraft:jungle_log", "minecraft:charcoal");
+        autoSmeltBlocks.put("minecraft:acacia_log", "minecraft:charcoal");
+        autoSmeltBlocks.put("minecraft:dark_oak_log", "minecraft:charcoal");
+        autoSmeltBlocks.put("minecraft:mangrove_log", "minecraft:charcoal");
+        autoSmeltBlocks.put("minecraft:cherry_log", "minecraft:charcoal");
+    }
+
+    public HashMap<String, String> getAutoSmeltBlocks() {
+        return autoSmeltBlocks;
     }
 }

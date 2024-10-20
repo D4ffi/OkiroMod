@@ -24,6 +24,7 @@ public interface IPlayerManager {
                     activeCards.add(stack);
                 } else {
                     ((TarotCardManager) stack.getItem()).deactivateCard(player);
+                    activeCards.remove(stack);
                 }
             }
         }
@@ -32,7 +33,6 @@ public interface IPlayerManager {
     default boolean getActiveCard(Class<?> card){
         for (ItemStack activeCard : activeCards){
             if (activeCard.getItem().getClass().equals(card)){
-                Okiro.LOGGER.info("Card is active");
                 return true;
             }
         }

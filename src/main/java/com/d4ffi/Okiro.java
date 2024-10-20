@@ -27,6 +27,7 @@ public class Okiro implements ModInitializer {
 		// Proceed with mild caution.
 
 		TarotConfigManager configManager = new TarotConfigManager();
+		configManager.initAutoSmeltBlocks();
 		OkiroItem.registerItems();
 		OkiroEffect.registerEffects();
 		OkiroEventRegister.registerEvents();

@@ -1,6 +1,7 @@
 package com.d4ffi.event;
 
 import com.d4ffi.item.Death;
+import com.d4ffi.item.Magician;
 import com.d4ffi.tarotCard.IPlayerManager;
 import net.fabricmc.fabric.api.event.player.AttackEntityCallback;
 import net.minecraft.entity.Entity;
@@ -21,6 +22,7 @@ public class AttackEvent implements AttackEntityCallback {
         if (!playerEntity.getWorld().isClient){
             IPlayerManager moddedPlayer = (IPlayerManager) playerEntity;
             deathEffect(moddedPlayer, entity);
+            magicianEffect(moddedPlayer, entity);
         }
 
         return ActionResult.PASS;
@@ -30,6 +32,14 @@ public class AttackEvent implements AttackEntityCallback {
         if (player.getActiveCard(Death.class)) {
             if (entity instanceof LivingEntity) {
                 ((LivingEntity) entity).addStatusEffect(new StatusEffectInstance(StatusEffects.WITHER, 100, 0));
+            }
+        }
+    }
+
+    private void magicianEffect(IPlayerManager player, Entity entity) {
+        if (player.getActiveCard(Magician.class)) {
+            if (entity instanceof LivingEntity) {
+                entity.setOnFireFor(5);
             }
         }
     }
