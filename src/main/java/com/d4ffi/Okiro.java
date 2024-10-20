@@ -1,5 +1,6 @@
 package com.d4ffi;
 
+import com.d4ffi.effect.OkiroEffect;
 import com.d4ffi.item.OkiroItem;
 import com.d4ffi.tarotCard.TarotConfigManager;
 import net.fabricmc.api.ModInitializer;
@@ -27,6 +28,8 @@ public class Okiro implements ModInitializer {
 
 		TarotConfigManager configManager = new TarotConfigManager();
 		OkiroItem.registerItems();
+		OkiroEffect.registerEffects();
+		OkiroEventRegister.registerEvents();
 		LOGGER.info("Hello Fabric world!");
 	}
 }

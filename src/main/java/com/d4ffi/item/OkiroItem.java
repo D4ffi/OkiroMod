@@ -103,7 +103,7 @@ public class OkiroItem {
                     itemGroupCards.add(HANGED_MAN);
                     break;
                 case "death":
-                    DEATH = registerItem("death", new Item(new FabricItemSettings()));
+                    DEATH = registerItem("death", new Death(new FabricItemSettings()));
                     itemGroupCards.add(DEATH);
                     break;
                 case "temperance":
@@ -115,7 +115,7 @@ public class OkiroItem {
                     itemGroupCards.add(DEVIL);
                     break;
                 case "thetower":
-                    TOWER = registerItem("thetower", new Item(new FabricItemSettings()));
+                    TOWER = registerItem("thetower", new Tower(new FabricItemSettings()));
                     itemGroupCards.add(TOWER);
                     break;
                 case "thestar":

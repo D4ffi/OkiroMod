@@ -21,5 +21,6 @@
   "item.okiro.thetower": "The Tower",
   "item.okiro.theworld": "The World",
   "item.okiro.wheeloffortune": "Wheel of Fortune",
-  "itemGroup.okiro_card_group": "Okiro Cards"
+  "itemGroup.okiro_card_group": "Okiro Cards",
+  "effect.okiro.moon_grace": "Moon's Grace"
 }

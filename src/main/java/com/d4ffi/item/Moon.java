@@ -1,9 +1,15 @@
 package com.d4ffi.item;
 
 import com.d4ffi.tarotCard.TarotCardManager;
+import net.minecraft.entity.effect.StatusEffectInstance;
+import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
 
+import static com.d4ffi.effect.OkiroEffect.MOON_GRACE;
+
 public class Moon extends TarotCardManager {
+
+    private static final double SPEED_BOOST = 0.05;
 
     public Moon(Settings settings) {
         super(settings);
@@ -11,7 +17,10 @@ public class Moon extends TarotCardManager {
 
     @Override
     public void activateCard(PlayerEntity player) {
-        //todo: add speed boost that only affects player when card is active and player is underwater
+        if (player.isSubmergedInWater()){
+            player.addStatusEffect(new StatusEffectInstance(StatusEffects.CONDUIT_POWER, 60, 0, false, false));
+            player.addStatusEffect(new StatusEffectInstance(MOON_GRACE, 60, 0, false, false));
+        }
     }
 
     @Override
