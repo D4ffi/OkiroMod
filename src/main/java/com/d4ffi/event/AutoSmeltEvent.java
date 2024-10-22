@@ -1,21 +1,27 @@
 package com.d4ffi.event;
 
 import com.d4ffi.Okiro;
+import com.d4ffi.item.Devil;
 import com.d4ffi.item.Sun;
 import com.d4ffi.tarotCard.IPlayerManager;
 import com.d4ffi.tarotCard.TarotConfigManager;
 import net.fabricmc.fabric.api.event.player.PlayerBlockBreakEvents;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
+import net.minecraft.block.entity.ChestBlockEntity;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.Enchantments;
 import net.minecraft.entity.ItemEntity;
+import net.minecraft.entity.ai.brain.Activity;
+import net.minecraft.entity.ai.brain.MemoryModuleType;
+import net.minecraft.entity.mob.PiglinEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.registry.Registries;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Box;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
@@ -36,6 +42,9 @@ public class AutoSmeltEvent implements PlayerBlockBreakEvents.Before {
         }
         return true;
     }
+
+
+
     private boolean autoSmelt(BlockState blockState, String blockName, World world, BlockPos blockPos, PlayerEntity playerEntity) {
         if (playerEntity.getMainHandStack().isSuitableFor(blockState)) {
             if (playerEntity.getMainHandStack().hasEnchantments() && playerEntity.getMainHandStack().getEnchantments().toString().contains("fortune")) {

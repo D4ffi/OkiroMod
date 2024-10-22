@@ -67,15 +67,15 @@ public class OkiroItem {
                     itemGroupCards.add(EMPRESS);
                     break;
                 case "theemperor":
-                    EMPEROR = registerItem("theemperor", new Item(new FabricItemSettings()));
+                    EMPEROR = registerItem("theemperor", new Emperor(new FabricItemSettings()));
                     itemGroupCards.add(EMPEROR);
                     break;
                 case "thehierophant":
                     HIEROPHANT = registerItem("thehierophant", new Hierophant(new FabricItemSettings()));
                     itemGroupCards.add(HIEROPHANT);
                     break;
-                case "theloovers":
-                    LOVERS = registerItem("thelovers", new Item(new FabricItemSettings()));
+                case "thelovers":
+                    LOVERS = registerItem("thelovers", new Lovers(new FabricItemSettings()));
                     itemGroupCards.add(LOVERS);
                     break;
                 case "thechariot":
@@ -111,7 +111,7 @@ public class OkiroItem {
                     itemGroupCards.add(TEMPERANCE);
                     break;
                 case "thedevil":
-                    DEVIL = registerItem("thedevil", new Item(new FabricItemSettings()));
+                    DEVIL = registerItem("thedevil", new Devil(new FabricItemSettings()));
                     itemGroupCards.add(DEVIL);
                     break;
                 case "thetower":
@@ -135,7 +135,7 @@ public class OkiroItem {
                     itemGroupCards.add(JUDGEMENT);
                     break;
                 case "theworld":
-                    WORLD = registerItem("theworld", new Item(new FabricItemSettings()));
+                    WORLD = registerItem("theworld", new World(new FabricItemSettings()));
                     itemGroupCards.add(WORLD);
                     break;
                 default:

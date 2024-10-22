@@ -16,6 +16,7 @@ public class TarotConfigManager {
     private Toml config;
     private static FileWriter fileWriter;
     private static final HashMap<String, String> autoSmeltBlocks = new HashMap<>();
+    private static final HashMap<String, String> turnToGoldItems = new HashMap<>();
 
     public TarotConfigManager() {
         try {
@@ -91,7 +92,7 @@ public class TarotConfigManager {
                     "theEmperorHeroOfTheVillageLevel = 3");
 
             writeCommentedConfig(writer,
-                    "Does the lovers can regenerate players and friendly mobs nearby?",
+                    "Does the lovers can regenerate nearby players and friendly mobs?",
                     "by default is set to false",
                     "theLoversHeal = false");
 
@@ -125,21 +126,6 @@ public class TarotConfigManager {
                     "by default is set to 3",
                     "theWorldSlowness = 3");
 
-            writeCommentedConfig(writer,
-                    "Does the World can stop time? We mean to add a slowness effect V to stop everything around the player",
-                    "by default is set to false",
-                    "theWorldCanStopTime = false");
-
-            writeCommentedConfig(writer,
-                    "Sets the duration of the time stop",
-                    "by default is set to 10",
-                    "theWorldTimeStopDuration = 10");
-
-            writeCommentedConfig(writer,
-                    "Sets the cooldown of the time stop",
-                    "by default is set to 3600",
-                    "theWorldTimeStopCooldown = 3600");
-
             writeCommentedConfig(writer, "Finally special thanks to all Fabric community <3", null);
         }
     }
@@ -163,6 +149,35 @@ public class TarotConfigManager {
 
     public List<Object> getActiveCards() {
         return config.getList("activeCards");
+    }
+
+    public boolean canLoversHealInRadius() {
+        return config.getBoolean("theLoversHeal", false);
+    }
+
+    public void initTurnToGoldItems(){
+        turnToGoldItems.put("minecraft:iron_ingot", "minecraft:gold_ingot");
+        turnToGoldItems.put("minecraft:iron_block", "minecraft:gold_block");
+        turnToGoldItems.put("minecraft:iron_ore", "minecraft:gold_ore");
+        turnToGoldItems.put("minecraft:iron_axe", "minecraft:golden_axe");
+        turnToGoldItems.put("minecraft:iron_hoe", "minecraft:golden_hoe");
+        turnToGoldItems.put("minecraft:iron_pickaxe", "minecraft:golden_pickaxe");
+        turnToGoldItems.put("minecraft:iron_shovel", "minecraft:golden_shovel");
+        turnToGoldItems.put("minecraft:iron_sword", "minecraft:golden_sword");
+        turnToGoldItems.put("minecraft:iron_boots", "minecraft:golden_boots");
+        turnToGoldItems.put("minecraft:iron_chestplate", "minecraft:golden_chestplate");
+        turnToGoldItems.put("minecraft:iron_helmet", "minecraft:golden_helmet");
+        turnToGoldItems.put("minecraft:iron_leggings", "minecraft:golden_leggings");
+        turnToGoldItems.put("carrot", "minecraft:golden_carrot");
+        turnToGoldItems.put("minecraft:apple", "minecraft:golden_apple");
+    }
+
+    public HashMap<String, String> getTurnToGoldItems() {
+        return turnToGoldItems;
+    }
+
+    public int getLoversHealAmount() {
+        return config.getLong("theLoversHealAmount", 1L).intValue();
     }
 
     public float getTemperanceMaxHealth() {
@@ -201,5 +216,9 @@ public class TarotConfigManager {
 
     public HashMap<String, String> getAutoSmeltBlocks() {
         return autoSmeltBlocks;
+    }
+
+    public int getWorldSlowness() {
+        return config.getLong("theWorldSlowness", 3L).intValue();
     }
 }
