@@ -13,5 +13,5 @@ public interface ITarotCard {
     public void setCardActive(boolean active);
     public void activateCard(PlayerEntity player);
     public void deactivateCard(PlayerEntity player);
-
+    public void forceDeactivation(PlayerEntity player);
 }

@@ -1,14 +1,21 @@
 package com.d4ffi.tarotCard;
 
 import com.d4ffi.Okiro;
+import com.d4ffi.effect.OkiroEffect;
 import com.moandjiezana.toml.Toml;
 import net.fabricmc.loader.api.FabricLoader;
+import net.minecraft.entity.effect.StatusEffect;
+import net.minecraft.entity.effect.StatusEffects;
+import net.minecraft.item.Item;
+import net.minecraft.item.Items;
 
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class TarotConfigManager {
 
@@ -16,7 +23,8 @@ public class TarotConfigManager {
     private Toml config;
     private static FileWriter fileWriter;
     private static final HashMap<String, String> autoSmeltBlocks = new HashMap<>();
-    private static final HashMap<String, String> turnToGoldItems = new HashMap<>();
+    private static final HashMap<Item, Item> turnToGoldItems = new HashMap<>();
+    private static final Set<StatusEffect> highPriestessNegateEffects = new HashSet<>();
 
     public TarotConfigManager() {
         try {
@@ -155,24 +163,29 @@ public class TarotConfigManager {
         return config.getBoolean("theLoversHeal", false);
     }
 
-    public void initTurnToGoldItems(){
-        turnToGoldItems.put("minecraft:iron_ingot", "minecraft:gold_ingot");
-        turnToGoldItems.put("minecraft:iron_block", "minecraft:gold_block");
-        turnToGoldItems.put("minecraft:iron_ore", "minecraft:gold_ore");
-        turnToGoldItems.put("minecraft:iron_axe", "minecraft:golden_axe");
-        turnToGoldItems.put("minecraft:iron_hoe", "minecraft:golden_hoe");
-        turnToGoldItems.put("minecraft:iron_pickaxe", "minecraft:golden_pickaxe");
-        turnToGoldItems.put("minecraft:iron_shovel", "minecraft:golden_shovel");
-        turnToGoldItems.put("minecraft:iron_sword", "minecraft:golden_sword");
-        turnToGoldItems.put("minecraft:iron_boots", "minecraft:golden_boots");
-        turnToGoldItems.put("minecraft:iron_chestplate", "minecraft:golden_chestplate");
-        turnToGoldItems.put("minecraft:iron_helmet", "minecraft:golden_helmet");
-        turnToGoldItems.put("minecraft:iron_leggings", "minecraft:golden_leggings");
-        turnToGoldItems.put("carrot", "minecraft:golden_carrot");
-        turnToGoldItems.put("minecraft:apple", "minecraft:golden_apple");
+    public void initHighPriestessNegateEffects() {
+        highPriestessNegateEffects.add(StatusEffects.WITHER);
+        highPriestessNegateEffects.add(StatusEffects.POISON);
+        highPriestessNegateEffects.add(StatusEffects.SLOWNESS);
+        highPriestessNegateEffects.add(StatusEffects.BLINDNESS);
+        highPriestessNegateEffects.add(StatusEffects.DARKNESS);
+        highPriestessNegateEffects.add(StatusEffects.NAUSEA);
+        highPriestessNegateEffects.add(StatusEffects.WEAKNESS);
+        highPriestessNegateEffects.add(StatusEffects.LEVITATION);
+        highPriestessNegateEffects.add(StatusEffects.GLOWING);
+        highPriestessNegateEffects.add(StatusEffects.UNLUCK);
     }
 
-    public HashMap<String, String> getTurnToGoldItems() {
+    public Set<StatusEffect> getHighPriestessNegateEffects() {
+        return highPriestessNegateEffects;
+    }
+
+    public void initTurnToGoldItems(){
+        turnToGoldItems.put(Items.CARROT, Items.GOLDEN_CARROT);
+        turnToGoldItems.put(Items.APPLE, Items.GOLDEN_APPLE);
+    }
+
+    public HashMap<Item, Item> getTurnToGoldItems() {
         return turnToGoldItems;
     }
 

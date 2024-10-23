@@ -5,13 +5,15 @@ import com.d4ffi.tarotCard.TarotConfigManager;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 
 import java.util.HashMap;
 
 public class Emperor extends TarotCardManager {
 
     TarotConfigManager configManager = new TarotConfigManager();
-    private HashMap<String, String> emperorItems = configManager.getTurnToGoldItems();
+    private HashMap<Item, Item> emperorItems = configManager.getTurnToGoldItems();
 
     public Emperor(Settings settings) {
         super(settings);
@@ -19,13 +21,26 @@ public class Emperor extends TarotCardManager {
 
     @Override
     public void activateCard(PlayerEntity player) {
-        player.addStatusEffect(new StatusEffectInstance(StatusEffects.HERO_OF_THE_VILLAGE, 60, 4));
         midasTouch(player);
     }
 
-    private void midasTouch(PlayerEntity player) {
-        if (player.experienceLevel > 0) {
+    void midasTouch(PlayerEntity player) {
 
+        ItemStack offHandStack = player.getOffHandStack();
+
+        for (Item item : emperorItems.keySet()) {
+            if (offHandStack.getItem() == item) {
+                ItemStack itemStack = new ItemStack(emperorItems.get(item));
+
+                int count = offHandStack.getCount();
+                offHandStack.decrement(offHandStack.getCount());
+
+                itemStack.setCount(count);
+                player.getInventory().offerOrDrop(itemStack);
+
+            }
         }
     }
+
+
 }

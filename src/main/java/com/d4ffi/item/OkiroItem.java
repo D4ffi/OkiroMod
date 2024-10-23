@@ -59,7 +59,7 @@ public class OkiroItem {
                     itemGroupCards.add(MAGICIAN);
                     break;
                 case "thehighpriestess":
-                    HIGH_PRIESTESS = registerItem("thehighpriestess", new Item(new FabricItemSettings()));
+                    HIGH_PRIESTESS = registerItem("thehighpriestess", new HighPriestess(new FabricItemSettings()));
                     itemGroupCards.add(HIGH_PRIESTESS);
                     break;
                 case "theempress":

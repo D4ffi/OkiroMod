@@ -13,6 +13,7 @@ import net.minecraft.world.World;
 public class TarotCardManager extends Item implements ITarotCard {
 
     public Box box = new Box(-2.5, -2.5, -2.5, 2.5, 2.5, 2.5);
+    private boolean wasActivated = false;
 
     @Override
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
@@ -50,6 +51,9 @@ public class TarotCardManager extends Item implements ITarotCard {
     public void activateCard(PlayerEntity player) {}
     @Override
     public void deactivateCard(PlayerEntity player) {}
+
+    @Override
+    public void forceDeactivation(PlayerEntity player) {}
 
     public void playerAOE(PlayerEntity player){}
 

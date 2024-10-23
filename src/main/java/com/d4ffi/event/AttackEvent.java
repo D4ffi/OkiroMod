@@ -1,6 +1,5 @@
 package com.d4ffi.event;
 
-import com.d4ffi.effect.Freeze;
 import com.d4ffi.effect.OkiroEffect;
 import com.d4ffi.item.Death;
 import com.d4ffi.item.Hierophant;
