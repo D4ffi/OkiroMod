@@ -1,11 +1,8 @@
 package com.d4ffi;
 
-import com.d4ffi.event.AttackEvent;
-import com.d4ffi.event.AutoSmeltEvent;
-import com.d4ffi.event.CancelNegativeEffectEvent;
-import com.d4ffi.event.VillagerTradeEvent;
-import com.d4ffi.item.Emperor;
-import com.d4ffi.item.HighPriestess;
+import com.d4ffi.event.*;
+import com.d4ffi.item.cards.Emperor;
+import com.d4ffi.item.cards.HighPriestess;
 import com.d4ffi.tarotCard.IPlayerManager;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
 import net.fabricmc.fabric.api.event.player.AttackEntityCallback;
@@ -39,6 +36,7 @@ public class OkiroEventRegister {
                 }
             });
         });
+        ServerTickEvents.START_SERVER_TICK.register(new JusticeEvent());
 
 
     }

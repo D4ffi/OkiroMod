@@ -1,7 +1,7 @@
 package com.d4ffi.event;
 
 import com.d4ffi.Okiro;
-import com.d4ffi.item.Sun;
+import com.d4ffi.item.cards.Sun;
 import com.d4ffi.tarotCard.IPlayerManager;
 import com.d4ffi.tarotCard.TarotConfigManager;
 import net.fabricmc.fabric.api.event.player.PlayerBlockBreakEvents;

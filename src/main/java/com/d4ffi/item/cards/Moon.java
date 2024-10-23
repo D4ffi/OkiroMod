@@ -1,4 +1,4 @@
-package com.d4ffi.item;
+package com.d4ffi.item.cards;
 
 import com.d4ffi.tarotCard.TarotCardManager;
 import net.minecraft.entity.effect.StatusEffectInstance;
@@ -21,10 +21,5 @@ public class Moon extends TarotCardManager {
             player.addStatusEffect(new StatusEffectInstance(StatusEffects.CONDUIT_POWER, 60, 0, false, false));
             player.addStatusEffect(new StatusEffectInstance(MOON_GRACE, 60, 0, false, false));
         }
-    }
-
-    @Override
-    public void deactivateCard(PlayerEntity player) {
-        //todo: remove speed boost when card is deactivated
     }
 }

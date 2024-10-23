@@ -1,9 +1,7 @@
-package com.d4ffi.item;
+package com.d4ffi.item.cards;
 
 import com.d4ffi.tarotCard.TarotCardManager;
 import com.d4ffi.tarotCard.TarotConfigManager;
-import net.minecraft.entity.effect.StatusEffectInstance;
-import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;

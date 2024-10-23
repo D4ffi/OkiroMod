@@ -1,6 +1,6 @@
 package com.d4ffi.mixin;
 
-import com.d4ffi.item.Hierophant;
+import com.d4ffi.item.cards.Hierophant;
 import com.d4ffi.tarotCard.IPlayerManager;
 import net.minecraft.block.PowderSnowBlock;
 import net.minecraft.entity.Entity;

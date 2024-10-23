@@ -20,6 +20,9 @@
 		],
 		"fabric-datagen": [
 			"com.d4ffi.OkiroDataGenerator"
+		],
+		"client": [
+			"com.d4ffi.OkiroClient"
 		]
 	},
 	"mixins": [

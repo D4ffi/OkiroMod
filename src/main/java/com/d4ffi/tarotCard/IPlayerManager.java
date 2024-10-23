@@ -1,11 +1,6 @@
 package com.d4ffi.tarotCard;
 
-import com.d4ffi.Okiro;
-import com.d4ffi.item.OkiroItem;
-import com.d4ffi.item.Temperance;
-import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
 import java.util.HashSet;

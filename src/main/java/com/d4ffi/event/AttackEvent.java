@@ -1,9 +1,9 @@
 package com.d4ffi.event;
 
 import com.d4ffi.effect.OkiroEffect;
-import com.d4ffi.item.Death;
-import com.d4ffi.item.Hierophant;
-import com.d4ffi.item.Magician;
+import com.d4ffi.item.cards.Death;
+import com.d4ffi.item.cards.Hierophant;
+import com.d4ffi.item.cards.Magician;
 import com.d4ffi.tarotCard.IPlayerManager;
 import net.fabricmc.fabric.api.event.player.AttackEntityCallback;
 import net.minecraft.entity.Entity;

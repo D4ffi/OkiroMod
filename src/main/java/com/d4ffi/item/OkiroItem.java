@@ -1,6 +1,7 @@
 package com.d4ffi.item;
 
 import com.d4ffi.Okiro;
+import com.d4ffi.item.cards.*;
 import com.d4ffi.tarotCard.TarotConfigManager;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
@@ -95,7 +96,7 @@ public class OkiroItem {
                     itemGroupCards.add(WHEEL_OF_FORTUNE);
                     break;
                 case "justice":
-                    JUSTICE = registerItem("justice", new Item(new FabricItemSettings()));
+                    JUSTICE = registerItem("justice", new Justice(new FabricItemSettings()));
                     itemGroupCards.add(JUSTICE);
                     break;
                 case "thehangedman":

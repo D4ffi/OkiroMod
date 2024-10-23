@@ -1,4 +1,4 @@
-package com.d4ffi.item;
+package com.d4ffi.item.cards;
 
 import com.d4ffi.tarotCard.TarotCardManager;
 import com.d4ffi.tarotCard.TarotConfigManager;

@@ -1,6 +1,6 @@
 package com.d4ffi.mixin;
 
-import com.d4ffi.item.Temperance;
+import com.d4ffi.item.cards.Temperance;
 import com.d4ffi.tarotCard.IPlayerManager;
 import com.d4ffi.tarotCard.TarotCardManager;
 import com.d4ffi.tarotCard.TarotConfigManager;
