@@ -2,6 +2,7 @@ package com.d4ffi.tarotCard;
 
 import com.d4ffi.Okiro;
 import com.d4ffi.effect.OkiroEffect;
+import com.d4ffi.item.cards.Empress;
 import com.moandjiezana.toml.Toml;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.entity.effect.StatusEffect;
@@ -12,26 +13,34 @@ import net.minecraft.item.Items;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class TarotConfigManager {
 
     private static final String CONFIG_FILE_NAME = "okiro_config.toml";
     private Toml config;
+    private static Toml serverConfig;
     private static FileWriter fileWriter;
     private static final HashMap<String, String> autoSmeltBlocks = new HashMap<>();
     private static final HashMap<Item, Item> turnToGoldItems = new HashMap<>();
     private static final Set<StatusEffect> highPriestessNegateEffects = new HashSet<>();
+    private static List<Class<?>> cardsWithKeyEffects = new ArrayList<>();
 
     public TarotConfigManager() {
         try {
             loadconfig();
+            loadStaticConfig();
         } catch (IOException e) {
             Okiro.LOGGER.info("Error loading config file || {}", e.getMessage());
         }
+    }
+
+    public static void loadStaticConfig() {
+        File configFile = FabricLoader.getInstance().getConfigDir().resolve(CONFIG_FILE_NAME).toFile();
+
+        // assumes there is a config file
+
+        serverConfig = new Toml().read(configFile);
     }
 
     public void loadconfig() throws IOException {
