@@ -6,6 +6,7 @@
     "CheckInventory",
     "ExampleMixin",
     "PeacefulPiglinMixin",
+    "PiglinMixin",
     "WalkOnPowderSnowMixin"
   ],
   "injectors": {

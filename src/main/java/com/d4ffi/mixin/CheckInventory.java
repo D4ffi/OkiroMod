@@ -28,6 +28,8 @@ public class CheckInventory implements IPlayerManager {
     int tick = 0;
     @Unique
     boolean isTemperanceActive = false;
+    @Unique
+    boolean isDevilActive = false;
 
     @Inject(at = @At("HEAD"), method = "tick")
     public void checkInventory(CallbackInfo ci) {

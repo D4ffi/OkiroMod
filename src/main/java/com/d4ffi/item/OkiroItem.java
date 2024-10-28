@@ -45,7 +45,7 @@ public class OkiroItem {
     public static Item JUDGEMENT;
     public static Item WORLD;
 
-    static List<Item> itemGroupCards = new ArrayList<>();
+    public static List<Item> itemGroupCards = new ArrayList<>();
 
     public static void InstanceCards() {
         for (Object card : activeCards) {

@@ -1,7 +1,5 @@
 package com.d4ffi.tarotCard;
 
-import net.minecraft.entity.effect.StatusEffectInstance;
-import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -12,13 +10,10 @@ import net.minecraft.world.World;
 
 public class TarotCardManager extends Item implements ITarotCard {
 
-    public Box box = new Box(-2.5, -2.5, -2.5, 2.5, 2.5, 2.5);
-    private boolean wasActivated = false;
-
     @Override
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
 
-        if (!user.getWorld().isClient){
+        if (!user.getWorld().isClient && !user.isSneaky()){
             user.getMainHandStack().getOrCreateNbt().putBoolean("active", !user.getMainHandStack().getOrCreateNbt().getBoolean("active"));
         }
         return super.use(world, user, hand);
@@ -51,10 +46,7 @@ public class TarotCardManager extends Item implements ITarotCard {
     public void activateCard(PlayerEntity player) {}
     @Override
     public void deactivateCard(PlayerEntity player) {}
-
     @Override
     public void forceDeactivation(PlayerEntity player) {}
-
-    public void playerAOE(PlayerEntity player){}
 
 }
