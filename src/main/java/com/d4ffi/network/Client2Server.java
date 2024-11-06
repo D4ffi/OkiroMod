@@ -11,22 +11,16 @@ import net.minecraft.item.Item;
 
 public class Client2Server {
     public static void registerPackets() {
-        ServerPlayNetworking.registerGlobalReceiver(OkiroPackets.KEYBIND_PACKET, (server, player, handler, buf, responseSender) -> {
-            server.execute(() -> {
-                getCardToActivate((player));
-            });
-        });
+        ServerPlayNetworking.registerGlobalReceiver(OkiroPackets.KEYBIND_PACKET, (server, player, handler, buf, responseSender) -> server.execute(() -> getCardToActivate((player))));
 
-        ServerPlayNetworking.registerGlobalReceiver(OkiroPackets.FOOL_DASH, (server, player, handler, buf, responseSender) -> {
-            server.execute(() -> {
+        ServerPlayNetworking.registerGlobalReceiver(OkiroPackets.FOOL_DASH, (server, player, handler, buf, responseSender) -> server.execute(() -> {
 
-                IPlayerManager playerManager = (IPlayerManager) player;
+            IPlayerManager playerManager = (IPlayerManager) player;
 
-                if (playerManager.getActiveCard(Fool.class)) {
-                    Fool.activateKeyBindAbility(player);
-                }
-            });
-        });
+            if (playerManager.getActiveCard(Fool.class)) {
+                Fool.activateKeyBindAbility(player);
+            }
+        }));
     }
 
     private static void getCardToActivate(PlayerEntity player) {

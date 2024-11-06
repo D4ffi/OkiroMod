@@ -22,8 +22,8 @@ public class Server2Client {
 
         ClientPlayNetworking.registerGlobalReceiver(OkiroPackets.EMPRESS_FAILED, (client, handler, buf, responseSender) -> {
             client.execute(() -> {
+                assert client.player != null;
                 client.player.sendMessage(Text.translatable("message.okiro.empress_failed"), true);
-                client.player.playSound(SoundEvents.BLOCK_LAVA_EXTINGUISH, SoundCategory.PLAYERS, 0.6F, 0.8F);
             });
         });
 

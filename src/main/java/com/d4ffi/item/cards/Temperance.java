@@ -5,6 +5,8 @@ import com.d4ffi.tarotCard.TarotConfigManager;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.player.PlayerEntity;
 
+import java.util.Objects;
+
 public class Temperance extends TarotCardManager {
 
     static TarotConfigManager configManager = new TarotConfigManager();
@@ -18,7 +20,7 @@ public class Temperance extends TarotCardManager {
 
     @Override
     public void activateCard(PlayerEntity player) {
-        player.getAttributeInstance(EntityAttributes.GENERIC_MAX_HEALTH).setBaseValue(DEFAULT_HEALTH + EXTRA_HEALTH);
+        Objects.requireNonNull(player.getAttributeInstance(EntityAttributes.GENERIC_MAX_HEALTH)).setBaseValue(DEFAULT_HEALTH + EXTRA_HEALTH);
     }
 
     @Override

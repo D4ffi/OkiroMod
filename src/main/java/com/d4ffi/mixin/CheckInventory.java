@@ -1,5 +1,6 @@
 package com.d4ffi.mixin;
 
+import com.d4ffi.Okiro;
 import com.d4ffi.item.cards.Temperance;
 import com.d4ffi.tarotCard.IPlayerManager;
 import com.d4ffi.tarotCard.TarotCardManager;
@@ -12,6 +13,8 @@ import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+
+import java.util.Objects;
 
 @Mixin(PlayerEntity.class)
 public class CheckInventory implements IPlayerManager {
@@ -30,6 +33,10 @@ public class CheckInventory implements IPlayerManager {
     boolean isTemperanceActive = false;
     @Unique
     boolean isDevilActive = false;
+    @Unique
+    float lostHealth = 0.0f;
+    @Unique
+    float damageFromTemperance = 0.0f;
 
     @Inject(at = @At("HEAD"), method = "tick")
     public void checkInventory(CallbackInfo ci) {
@@ -69,6 +76,51 @@ public class CheckInventory implements IPlayerManager {
                     }
                 }
             }
+        }
+    }
+
+    @Override
+    public float getLostHearts(PlayerEntity player) {
+        return lostHealth;
+    }
+
+    @Override
+    public void setLostHearts(PlayerEntity player, float lostHealth) {
+        this.lostHealth = lostHealth;
+    }
+
+    @Override
+    public void setLostHeartsFromTemperance(PlayerEntity player, float damage) {
+        this.damageFromTemperance = damage;
+    }
+
+    @Override
+    public void addLostHearts(PlayerEntity player, float lostHealth) {
+        this.lostHealth += lostHealth;
+    }
+
+    @Override
+    public void addDamageFromTemperance(PlayerEntity player, float damage) {
+        this.damageFromTemperance += damage;
+    }
+
+    @Override
+    public float getLostHeartsFromTemperance(PlayerEntity player) {
+        return damageFromTemperance;
+    }
+
+    @Override
+    public void returnLostHearts(PlayerEntity player) {
+        try {
+
+            if (!this.getActiveCard(Temperance.class)){
+                float handleDamage = this.getLostHearts(player) - this.getLostHeartsFromTemperance(player);
+                Objects.requireNonNull(player.getAttributeInstance(EntityAttributes.GENERIC_MAX_HEALTH)).setBaseValue(Objects.requireNonNull(player.getAttributeInstance(EntityAttributes.GENERIC_MAX_HEALTH)).getBaseValue() + handleDamage);
+                return;
+            }
+            Objects.requireNonNull(player.getAttributeInstance(EntityAttributes.GENERIC_MAX_HEALTH)).setBaseValue(Objects.requireNonNull(player.getAttributeInstance(EntityAttributes.GENERIC_MAX_HEALTH)).getBaseValue() + lostHealth);
+        } catch (NullPointerException e) {
+            Okiro.LOGGER.error("Error returning lost hearts: {}", String.valueOf(e));
         }
     }
 

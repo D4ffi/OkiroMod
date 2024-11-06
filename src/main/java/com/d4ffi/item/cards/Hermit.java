@@ -14,7 +14,7 @@ public class Hermit extends TarotCardManager {
         if (player.isFallFlying()){
             Vec3d lookDirection = player.getRotationVector();
 
-            double boost = 1.5;
+            double boost = 1.3;
             player.addVelocity(lookDirection.x * boost, lookDirection.y * boost, lookDirection.z * boost);
             player.velocityModified = true;
 

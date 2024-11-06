@@ -8,6 +8,7 @@
     "OnDamageMixin",
     "PeacefulPiglinMixin",
     "PiglinMixin",
+    "WakeUpMixin",
     "WalkOnPowderSnowMixin"
   ],
   "injectors": {

@@ -1,6 +1,5 @@
 package com.d4ffi.item.cards;
 
-import com.d4ffi.Okiro;
 import com.d4ffi.network.OkiroPackets;
 import com.d4ffi.tarotCard.TarotCardManager;
 import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
@@ -16,14 +15,11 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.Vec3d;
-import org.jetbrains.annotations.NotNull;
 
 import java.util.Objects;
 import java.util.Random;
 
 public class Empress extends TarotCardManager {
-
-    private static final Random random = new Random();
 
     public Empress(Settings settings) {
         super(settings);
@@ -31,7 +27,7 @@ public class Empress extends TarotCardManager {
 
     @Override
     public ActionResult useOnBlock(ItemUsageContext context) {
-        if (!context.getWorld().isClient && context.getPlayer().isSneaky()) {
+        if (!context.getWorld().isClient && Objects.requireNonNull(context.getPlayer()).isSneaky()) {
             if (context.getSide() == Direction.UP){
                 context.getPlayer().getMainHandStack().getOrCreateNbt()
                         .putIntArray("Location", new int[]{
@@ -68,9 +64,7 @@ public class Empress extends TarotCardManager {
                 }
             }
 
-        } catch (Exception e) {
-            Okiro.LOGGER.error("Empress failed");
-        }
+        } catch (Exception ignored) {}
     }
 
     private static boolean isValidTeleportLocation(PlayerEntity player, int x, int y, int z) {

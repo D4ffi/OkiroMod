@@ -12,6 +12,7 @@ import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.Rarity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -52,95 +53,95 @@ public class OkiroItem {
             String cardName = card.toString();
             switch (cardName) {
                 case "thefool":
-                    FOOL = registerItem("thefool", new Fool(new FabricItemSettings()));
+                    FOOL = registerItem("thefool", new Fool(new FabricItemSettings().maxCount(1).rarity(Rarity.EPIC)));
                     itemGroupCards.add(FOOL);
                     break;
                 case "themagician":
-                    MAGICIAN = registerItem("themagician", new Magician(new FabricItemSettings()));
+                    MAGICIAN = registerItem("themagician", new Magician(new FabricItemSettings().maxCount(1).rarity(Rarity.EPIC)));
                     itemGroupCards.add(MAGICIAN);
                     break;
                 case "thehighpriestess":
-                    HIGH_PRIESTESS = registerItem("thehighpriestess", new HighPriestess(new FabricItemSettings()));
+                    HIGH_PRIESTESS = registerItem("thehighpriestess", new HighPriestess(new FabricItemSettings().maxCount(1).rarity(Rarity.EPIC)));
                     itemGroupCards.add(HIGH_PRIESTESS);
                     break;
                 case "theempress":
-                    EMPRESS = registerItem("theempress", new Empress(new FabricItemSettings()));
+                    EMPRESS = registerItem("theempress", new Empress(new FabricItemSettings().maxCount(1).rarity(Rarity.EPIC)));
                     itemGroupCards.add(EMPRESS);
                     break;
                 case "theemperor":
-                    EMPEROR = registerItem("theemperor", new Emperor(new FabricItemSettings()));
+                    EMPEROR = registerItem("theemperor", new Emperor(new FabricItemSettings().maxCount(1).rarity(Rarity.EPIC)));
                     itemGroupCards.add(EMPEROR);
                     break;
                 case "thehierophant":
-                    HIEROPHANT = registerItem("thehierophant", new Hierophant(new FabricItemSettings()));
+                    HIEROPHANT = registerItem("thehierophant", new Hierophant(new FabricItemSettings().maxCount(1).rarity(Rarity.EPIC)));
                     itemGroupCards.add(HIEROPHANT);
                     break;
                 case "thelovers":
-                    LOVERS = registerItem("thelovers", new Lovers(new FabricItemSettings()));
+                    LOVERS = registerItem("thelovers", new Lovers(new FabricItemSettings().maxCount(1).rarity(Rarity.EPIC)));
                     itemGroupCards.add(LOVERS);
                     break;
                 case "thechariot":
-                    CHARIOT = registerItem("thechariot", new Chariot(new FabricItemSettings()));
+                    CHARIOT = registerItem("thechariot", new Chariot(new FabricItemSettings().maxCount(1).rarity(Rarity.EPIC)));
                     itemGroupCards.add(CHARIOT);
                     break;
                 case "strength":
-                    STRENGTH = registerItem("strength", new Strength(new FabricItemSettings()));
+                    STRENGTH = registerItem("strength", new Strength(new FabricItemSettings().maxCount(1).rarity(Rarity.EPIC)));
                     itemGroupCards.add(STRENGTH);
                     break;
                 case "thehermit":
-                    HERMIT = registerItem("thehermit", new Hermit(new FabricItemSettings()));
+                    HERMIT = registerItem("thehermit", new Hermit(new FabricItemSettings().maxCount(1).rarity(Rarity.EPIC)));
                     itemGroupCards.add(HERMIT);
                     break;
                 case "wheeloffortune":
-                    WHEEL_OF_FORTUNE = registerItem("wheeloffortune", new WheelOfFortune(new FabricItemSettings()));
+                    WHEEL_OF_FORTUNE = registerItem("wheeloffortune", new WheelOfFortune(new FabricItemSettings().maxCount(1).rarity(Rarity.EPIC)));
                     itemGroupCards.add(WHEEL_OF_FORTUNE);
                     break;
                 case "justice":
-                    JUSTICE = registerItem("justice", new Justice(new FabricItemSettings()));
+                    JUSTICE = registerItem("justice", new Justice(new FabricItemSettings().maxCount(1).rarity(Rarity.EPIC)));
                     itemGroupCards.add(JUSTICE);
                     break;
                 case "thehangedman":
-                    HANGED_MAN = registerItem("thehangedman", new Item(new FabricItemSettings()));
+                    HANGED_MAN = registerItem("thehangedman", new HangedMan(new FabricItemSettings().maxCount(1).rarity(Rarity.EPIC)));
                     itemGroupCards.add(HANGED_MAN);
                     break;
                 case "death":
-                    DEATH = registerItem("death", new Death(new FabricItemSettings()));
+                    DEATH = registerItem("death", new Death(new FabricItemSettings().maxCount(1).rarity(Rarity.EPIC)));
                     itemGroupCards.add(DEATH);
                     break;
                 case "temperance":
-                    TEMPERANCE = registerItem("temperance", new Temperance(new FabricItemSettings()));
+                    TEMPERANCE = registerItem("temperance", new Temperance(new FabricItemSettings().maxCount(1).rarity(Rarity.EPIC)));
                     itemGroupCards.add(TEMPERANCE);
                     break;
                 case "thedevil":
-                    DEVIL = registerItem("thedevil", new Devil(new FabricItemSettings()));
+                    DEVIL = registerItem("thedevil", new Devil(new FabricItemSettings().maxCount(1).rarity(Rarity.EPIC)));
                     itemGroupCards.add(DEVIL);
                     break;
                 case "thetower":
-                    TOWER = registerItem("thetower", new Tower(new FabricItemSettings()));
+                    TOWER = registerItem("thetower", new Tower(new FabricItemSettings().maxCount(1).rarity(Rarity.EPIC)));
                     itemGroupCards.add(TOWER);
                     break;
                 case "thestar":
-                    STAR = registerItem("thestar", new Star(new FabricItemSettings()));
+                    STAR = registerItem("thestar", new Star(new FabricItemSettings().maxCount(1).rarity(Rarity.EPIC)));
                     itemGroupCards.add(STAR);
                     break;
                 case "themoon":
-                    MOON = registerItem("themoon", new Moon(new FabricItemSettings()));
+                    MOON = registerItem("themoon", new Moon(new FabricItemSettings().maxCount(1).rarity(Rarity.EPIC)));
                     itemGroupCards.add(MOON);
                     break;
                 case "thesun":
-                    SUN = registerItem("thesun", new Sun(new FabricItemSettings()));
+                    SUN = registerItem("thesun", new Sun(new FabricItemSettings().maxCount(1).rarity(Rarity.EPIC)));
                     itemGroupCards.add(SUN);
                     break;
                 case "judgement":
-                    JUDGEMENT = registerItem("judgement", new Item(new FabricItemSettings()));
+                    JUDGEMENT = registerItem("judgement", new Judgement(new FabricItemSettings().maxCount(1).rarity(Rarity.EPIC)));
                     itemGroupCards.add(JUDGEMENT);
                     break;
                 case "theworld":
-                    WORLD = registerItem("theworld", new World(new FabricItemSettings()));
+                    WORLD = registerItem("theworld", new World(new FabricItemSettings().maxCount(1).rarity(Rarity.EPIC)));
                     itemGroupCards.add(WORLD);
                     break;
                 default:
-                    Okiro.LOGGER.warn("Unknown card: " + cardName);
+                    Okiro.LOGGER.warn("Unknown card: {}", cardName);
                     break;
             }
         }

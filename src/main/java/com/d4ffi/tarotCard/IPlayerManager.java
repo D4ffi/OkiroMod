@@ -11,6 +11,13 @@ public interface IPlayerManager {
     Set<ItemStack> activeCards = new HashSet<>();
 
     void checkInventory(PlayerEntity player);
+    float getLostHearts(PlayerEntity player);
+    void setLostHearts(PlayerEntity player, float lostHealth);
+    void setLostHeartsFromTemperance(PlayerEntity player, float damage);
+    void addLostHearts(PlayerEntity player, float lostHealth);
+    void addDamageFromTemperance(PlayerEntity player, float damage);
+    float getLostHeartsFromTemperance(PlayerEntity player);
+    void returnLostHearts(PlayerEntity player);
 
     default boolean getActiveCard(Class<?> card) {
         for (ItemStack activeCard : activeCards) {
@@ -36,5 +43,6 @@ public interface IPlayerManager {
         }
         return false;
     }
+
 
 }
