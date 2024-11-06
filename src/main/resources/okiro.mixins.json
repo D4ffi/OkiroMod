@@ -5,6 +5,7 @@
   "mixins": [
     "CheckInventory",
     "ExampleMixin",
+    "OnDamageMixin",
     "PeacefulPiglinMixin",
     "PiglinMixin",
     "WalkOnPowderSnowMixin"

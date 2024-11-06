@@ -6,12 +6,12 @@ import net.fabricmc.fabric.api.entity.event.v1.EntityElytraEvents;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 
-public class ElytraFlightEvent implements EntityElytraEvents.Allow {
+public class ElytraFlightEvent implements EntityElytraEvents.Custom {
 
     @Override
-    public boolean allowElytraFlight(LivingEntity livingEntity) {
-        if (livingEntity instanceof PlayerEntity){
-            IPlayerManager playerManager = (IPlayerManager) livingEntity;
+    public boolean useCustomElytra(LivingEntity entity, boolean tickElytra) {
+        if (entity instanceof PlayerEntity player) {
+            IPlayerManager playerManager = (IPlayerManager) player;
             return playerManager.getActiveCard(Hermit.class);
         }
         return false;

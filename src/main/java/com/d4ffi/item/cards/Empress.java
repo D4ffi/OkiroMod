@@ -16,6 +16,7 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.Vec3d;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.Objects;
 import java.util.Random;
@@ -78,10 +79,10 @@ public class Empress extends TarotCardManager {
     }
 
     private static void teleportPlayerWithEffects(PlayerEntity player, int x, int y, int z) {
+        spawnTeleportParticles(player, new Vec3d(x + 0.5, y, z + 0.5));
         player.teleport(x + 0.5, y + 1, z + 0.5);
         player.getWorld().playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.ENTITY_ENDERMAN_TELEPORT, SoundCategory.PLAYERS, 1.0F, 0.5F);
-        spawnTeleportParticles(player, new Vec3d(x + 0.5, y, z + 0.5));
-        spawnTeleportParticles(player, new Vec3d(x + 0.5, y + 1, z + 0.5));
+
     }
 
     private static void spawnTeleportParticles(PlayerEntity player, Vec3d pos) {
@@ -89,22 +90,13 @@ public class Empress extends TarotCardManager {
 
         ServerWorld world = (ServerWorld) player.getWorld();
 
-        // Generar nube de partículas
-        for (int i = 0; i < 32; i++) {
-            double offsetX = random.nextGaussian() * 0.2;
-            double offsetY = random.nextGaussian() * 0.2;
-            double offsetZ = random.nextGaussian() * 0.2;
+        Random random = new Random();
+        double velocityX = random.nextGaussian() * 0.02D;
+        double velocityY = random.nextGaussian() * 0.02D;
+        double velocityZ = random.nextGaussian() * 0.02D;
 
-            world.spawnParticles(
-                    ParticleTypes.PORTAL,
-                    pos.getX() + offsetX,
-                    pos.getY() + offsetY + 1,
-                    pos.getZ() + offsetZ,
-                    10, // cantidad de partículas por punto
-                    0, 0, 0, // velocidad de las partículas
-                    0 // velocidad extra
-            );
-        }
+        world.spawnParticles(ParticleTypes.SCULK_SOUL, pos.getX(), pos.getY() + 1, pos.getZ(), 108, velocityX, velocityY, velocityZ, 0.1);
+
     }
 }
 

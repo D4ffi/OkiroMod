@@ -21,4 +21,20 @@ public interface IPlayerManager {
         return false;
     }
 
+    default void setCardCooldown(PlayerEntity player, Class<?> card, int cooldown) {
+        for (ItemStack activeCard : activeCards) {
+            if (activeCard.getItem().getClass().equals(card)) {
+                player.getItemCooldownManager().set(activeCard.getItem(), cooldown);
+            }
+        }
+    }
+    default boolean isCardOnCooldown(PlayerEntity player, Class<?> card) {
+        for (ItemStack activeCard : activeCards) {
+            if (activeCard.getItem().getClass().equals(card)) {
+                return player.getItemCooldownManager().isCoolingDown(activeCard.getItem());
+            }
+        }
+        return false;
+    }
+
 }

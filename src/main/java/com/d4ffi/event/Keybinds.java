@@ -14,13 +14,30 @@ public class Keybinds {
     public static final String KEYBIND_CATEGORY = "key.categories.okiro";
     public static final String KEYBIND_CARD = "key.okiro.card";
 
+    private static boolean onground = true;
+
     public static KeyBinding okiroKeybind;
 
     public static void keyBindAction() {
         ClientTickEvents.END_CLIENT_TICK.register(client -> {
             if (okiroKeybind.wasPressed()) {
                 ClientPlayNetworking.send(OkiroPackets.KEYBIND_PACKET, PacketByteBufs.empty());
+                return;
             }
+
+            if (onground && client.options.jumpKey.wasPressed()) {
+                onground = false;
+            }
+            if (client.player != null){
+                if (client.player.isOnGround()) {
+                    onground = true;
+                }
+            }
+            if (!onground && client.options.jumpKey.wasPressed()) {
+                onground = true;
+                ClientPlayNetworking.send(OkiroPackets.FOOL_DASH, PacketByteBufs.empty());
+            }
+
         });
     }
 

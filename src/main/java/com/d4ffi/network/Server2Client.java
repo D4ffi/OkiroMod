@@ -20,13 +20,6 @@ public class Server2Client {
 
     public static void registerPackets() {
 
-        ClientPlayNetworking.registerGlobalReceiver(OkiroPackets.EMPRESS_SUCCEED, (client, handler, buf, responseSender) -> {
-            client.execute(() -> {
-                client.player.sendMessage(Text.translatable("message.okiro.empress_failed"), true);
-                client.player.playSound(SoundEvents.ENTITY_FOX_TELEPORT, SoundCategory.PLAYERS, 1.0F, 0.6F);
-            });
-        });
-
         ClientPlayNetworking.registerGlobalReceiver(OkiroPackets.EMPRESS_FAILED, (client, handler, buf, responseSender) -> {
             client.execute(() -> {
                 client.player.sendMessage(Text.translatable("message.okiro.empress_failed"), true);

@@ -4,6 +4,7 @@ import com.d4ffi.event.*;
 import com.d4ffi.item.cards.Emperor;
 import com.d4ffi.item.cards.HighPriestess;
 import com.d4ffi.tarotCard.IPlayerManager;
+import net.fabricmc.fabric.api.entity.event.v1.EntityElytraEvents;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
 import net.fabricmc.fabric.api.event.player.AttackEntityCallback;
 import net.fabricmc.fabric.api.event.player.PlayerBlockBreakEvents;
@@ -28,6 +29,7 @@ public class OkiroEventRegister {
             }
             return ActionResult.PASS;
         });
+        EntityElytraEvents.CUSTOM.register(new ElytraFlightEvent());
         ServerTickEvents.END_SERVER_TICK.register(server -> {
             server.getPlayerManager().getPlayerList().forEach(player -> {
                 IPlayerManager playerManager = (IPlayerManager) player;

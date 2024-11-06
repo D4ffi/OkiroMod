@@ -23,5 +23,9 @@
   "item.okiro.wheeloffortune": "Wheel of Fortune",
   "itemGroup.okiro_card_group": "Okiro Cards",
   "effect.okiro.moon_grace": "Moon's Grace",
-  "message.okiro.empress_failed": "Location is obstructed"
+  "message.okiro.empress_failed": "Location is obstructed",
+  "message.okiro.insufficient_xp": "Cant cast right now...",
+  "key.categories.okiro": "Okiro",
+  "key.okiro.card": "Use Ability",
+  "key.okiro.fool_dash": "Use Fool's Dash"
 }

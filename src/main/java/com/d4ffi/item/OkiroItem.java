@@ -52,7 +52,7 @@ public class OkiroItem {
             String cardName = card.toString();
             switch (cardName) {
                 case "thefool":
-                    FOOL = registerItem("thefool", new Item(new FabricItemSettings()));
+                    FOOL = registerItem("thefool", new Fool(new FabricItemSettings()));
                     itemGroupCards.add(FOOL);
                     break;
                 case "themagician":
@@ -88,7 +88,7 @@ public class OkiroItem {
                     itemGroupCards.add(STRENGTH);
                     break;
                 case "thehermit":
-                    HERMIT = registerItem("thehermit", new Item(new FabricItemSettings()));
+                    HERMIT = registerItem("thehermit", new Hermit(new FabricItemSettings()));
                     itemGroupCards.add(HERMIT);
                     break;
                 case "wheeloffortune":

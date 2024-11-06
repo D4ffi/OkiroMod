@@ -5,6 +5,8 @@ import net.minecraft.util.Identifier;
 
 public class OkiroPackets {
     public static final Identifier KEYBIND_PACKET = new Identifier(Okiro.MOD_ID, "keybind_packet");
-    public static final Identifier EMPRESS_SUCCEED = new Identifier(Okiro.MOD_ID, "empress_succeed");
     public static final Identifier EMPRESS_FAILED = new Identifier(Okiro.MOD_ID, "empress_failed");
+    public static final Identifier HERMIT_BOOST = new Identifier(Okiro.MOD_ID, "hermit_boost");
+    public static final Identifier FOOL_DASH = new Identifier(Okiro.MOD_ID, "fool_dash");
+    public static final Identifier FOOL_KEYBIND = new Identifier(Okiro.MOD_ID, "fool_keybind");
 }

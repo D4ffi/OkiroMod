@@ -2,7 +2,6 @@ package com.d4ffi.mixin;
 
 import com.d4ffi.item.cards.Devil;
 import com.d4ffi.tarotCard.IPlayerManager;
-import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.ai.brain.Brain;
 import net.minecraft.entity.ai.brain.MemoryModuleType;
 import net.minecraft.entity.mob.PiglinBruteBrain;
