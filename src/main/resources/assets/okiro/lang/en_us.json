@@ -27,5 +27,6 @@
   "message.okiro.insufficient_xp": "Cant cast right now...",
   "key.categories.okiro": "Okiro",
   "key.okiro.card": "Use Ability",
-  "key.okiro.fool_dash": "Use Fool's Dash"
+  "key.okiro.fool_dash": "Use Fool's Dash",
+  "item.okiro.deck" : "Deck"
 }

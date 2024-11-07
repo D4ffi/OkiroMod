@@ -23,6 +23,9 @@ public class OkiroItem {
 
     static List<Object> activeCards = configManager.getActiveCards();
 
+    public static final Item DECK = Registry.register(Registries.ITEM, new Identifier(Okiro.MOD_ID, "deck"),
+            new Deck(new FabricItemSettings().maxCount(1).rarity(Rarity.EPIC)));
+
     public static Item FOOL;
     public static Item MAGICIAN;
     public static Item HIGH_PRIESTESS;

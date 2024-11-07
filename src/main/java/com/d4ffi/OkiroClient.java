@@ -5,6 +5,7 @@ import com.d4ffi.network.Client2Server;
 import com.d4ffi.network.OkiroPackets;
 import com.d4ffi.network.Server2Client;
 import net.fabricmc.api.ClientModInitializer;
+import net.minecraft.client.gui.ScreenRect;
 
 public class OkiroClient implements ClientModInitializer {
 
@@ -13,6 +14,8 @@ public class OkiroClient implements ClientModInitializer {
 
         Server2Client.registerPackets();
         Keybinds.registerKeys();
+
+
     }
 
 }
