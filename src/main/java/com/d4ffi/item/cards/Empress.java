@@ -4,18 +4,24 @@ import com.d4ffi.network.OkiroPackets;
 import com.d4ffi.tarotCard.TarotCardManager;
 import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
+import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemUsageContext;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
+import net.minecraft.text.Text;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.Vec3d;
+import net.minecraft.world.World;
+import org.jetbrains.annotations.Nullable;
 
+import java.util.List;
 import java.util.Objects;
 import java.util.Random;
 
@@ -37,6 +43,16 @@ public class Empress extends TarotCardManager {
             }
         }
         return super.useOnBlock(context);
+    }
+
+    @Override
+    public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
+
+        tooltip.add(Text.translatable("tooltip.lore.theempress"));
+        tooltip.add(Text.literal(" "));
+        tooltip.add(Text.translatable("tooltip.description.theempress"));
+
+        super.appendTooltip(stack, world, tooltip, context);
     }
 
     public static void activateKeyBindAbility(PlayerEntity player) {

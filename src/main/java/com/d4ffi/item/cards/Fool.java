@@ -3,15 +3,32 @@ package com.d4ffi.item.cards;
 import com.d4ffi.Okiro;
 import com.d4ffi.tarotCard.IPlayerManager;
 import com.d4ffi.tarotCard.TarotCardManager;
+import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.ItemStack;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
+import net.minecraft.text.Text;
 import net.minecraft.util.math.Vec3d;
+import net.minecraft.world.World;
+import org.jetbrains.annotations.Nullable;
+
+import java.util.List;
 
 public class Fool extends TarotCardManager {
 
     public Fool(Settings settings) {
         super(settings);
+    }
+
+    @Override
+    public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
+
+        tooltip.add(Text.translatable("tooltip.lore.thefool"));
+        tooltip.add(Text.literal(" "));
+        tooltip.add(Text.translatable("tooltip.description.thefool"));
+
+        super.appendTooltip(stack, world, tooltip, context);
     }
 
     public static void activateKeyBindAbility(PlayerEntity player) {

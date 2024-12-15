@@ -34,7 +34,7 @@ public class AttackEvent implements AttackEntityCallback {
     private void deathEffect(IPlayerManager player, Entity entity) {
         if (player.getActiveCard(Death.class)) {
             if (entity instanceof LivingEntity) {
-                ((LivingEntity) entity).addStatusEffect(new StatusEffectInstance(StatusEffects.WITHER, 100, 0));
+                ((LivingEntity) entity).addStatusEffect(new StatusEffectInstance(StatusEffects.WITHER, 100, 1));
             }
         }
     }
