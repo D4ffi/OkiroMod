@@ -13,11 +13,12 @@ public interface IPlayerManager {
     void checkInventory(PlayerEntity player);
     float getLostHearts(PlayerEntity player);
     void setLostHearts(PlayerEntity player, float lostHealth);
-    void setLostHeartsFromTemperance(PlayerEntity player, float damage);
     void addLostHearts(PlayerEntity player, float lostHealth);
-    void addDamageFromTemperance(PlayerEntity player, float damage);
-    float getLostHeartsFromTemperance(PlayerEntity player);
     void returnLostHearts(PlayerEntity player);
+    float getLostHeartsFromTemperance(PlayerEntity player);
+    void setLostHeartsFromTemperance(PlayerEntity player, float lostHealth);
+    void addLostHeartsFromTemperance(PlayerEntity player, float lostHealth);
+
 
     default boolean getActiveCard(Class<?> card) {
         for (ItemStack activeCard : activeCards) {

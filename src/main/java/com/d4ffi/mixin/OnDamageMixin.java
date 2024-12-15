@@ -50,8 +50,7 @@ public class OnDamageMixin {
 
     @Unique
     private void HangedManDamage(PlayerEntity player, float amount, CallbackInfoReturnable<Boolean> cir) {
-        float amountForTemperance = 0;
-        float cancel = 0;
+
         IPlayerManager playerManager = (IPlayerManager) player;
 
         if (!playerManager.getActiveCard(HangedMan.class)) {
@@ -60,27 +59,27 @@ public class OnDamageMixin {
 
         float maxHealth = (float) Objects.requireNonNull(player.getAttributeInstance(EntityAttributes.GENERIC_MAX_HEALTH)).getBaseValue();
         float casedHearts = maxHealth - player.getHealth();
-        float useCasedHearts = 1;
 
         if (maxHealth == 2){
             return;
         }
 
         if (casedHearts > 0){
-            if (playerManager.getActiveCard(Temperance.class)){
+
+            if (playerManager.getActiveCard(Temperance.class)) {
+                if (!(playerManager.getLostHeartsFromTemperance(player) > 20)){
+                    if (amount <= casedHearts) {
+                        playerManager.addLostHeartsFromTemperance(player, amount);
+                        Objects.requireNonNull(player.getAttributeInstance(EntityAttributes.GENERIC_MAX_HEALTH)).setBaseValue(maxHealth - amount);
+                        player.setHealth(player.getHealth() + amount*.4f);
+                    }
+                }
+            } else {
                 if (amount <= casedHearts) {
                     playerManager.addLostHearts(player, amount);
-                    playerManager.addDamageFromTemperance(player, amount);
-                    if (playerManager.getLostHeartsFromTemperance(player) > 20){
-                        playerManager.setLostHeartsFromTemperance(player, 20);
-                    }
                     Objects.requireNonNull(player.getAttributeInstance(EntityAttributes.GENERIC_MAX_HEALTH)).setBaseValue(maxHealth - amount);
-                    return;
+                    player.setHealth(player.getHealth() + amount*.4f);
                 }
-            }
-            if (amount <= casedHearts) {
-                playerManager.addLostHearts(player, amount);
-                Objects.requireNonNull(player.getAttributeInstance(EntityAttributes.GENERIC_MAX_HEALTH)).setBaseValue(maxHealth - amount);
             }
         }
     }

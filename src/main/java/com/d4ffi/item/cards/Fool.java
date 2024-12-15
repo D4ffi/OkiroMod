@@ -1,5 +1,6 @@
 package com.d4ffi.item.cards;
 
+import com.d4ffi.Okiro;
 import com.d4ffi.tarotCard.IPlayerManager;
 import com.d4ffi.tarotCard.TarotCardManager;
 import net.minecraft.entity.player.PlayerEntity;
@@ -20,7 +21,7 @@ public class Fool extends TarotCardManager {
         if (!player.isOnGround() && !playerManager.isCardOnCooldown(player, Fool.class)){
             if(!player.isCreative()){
                 Vec3d lookDirection = player.getRotationVector();
-                double dash = 1.1;
+                double dash = 1.05;
                 player.addVelocity(lookDirection.x * dash, 0, lookDirection.z * dash);
                 player.velocityModified = true;
             }

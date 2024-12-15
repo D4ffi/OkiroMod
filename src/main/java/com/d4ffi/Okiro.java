@@ -1,21 +1,13 @@
 package com.d4ffi;
 
-import com.d4ffi.deck.DeckScreenHandler;
 import com.d4ffi.effect.OkiroEffect;
 import com.d4ffi.item.OkiroItem;
 import com.d4ffi.network.Client2Server;
-import com.d4ffi.network.Server2Client;
 import com.d4ffi.tarotCard.TarotConfigManager;
 import net.fabricmc.api.ModInitializer;
 
-import net.fabricmc.fabric.api.screenhandler.v1.ScreenHandlerRegistry;
-import net.fabricmc.loader.api.FabricLoader;
-import net.minecraft.screen.ScreenHandlerType;
-import net.minecraft.util.Identifier;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import java.nio.file.Path;
 
 public class Okiro implements ModInitializer {
 

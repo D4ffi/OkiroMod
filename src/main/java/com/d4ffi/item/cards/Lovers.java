@@ -25,7 +25,15 @@ public class Lovers extends TarotCardManager {
         if (canHealInArea){
             playerAOE(player);
         } else {
-            player.addStatusEffect(new StatusEffectInstance(StatusEffects.REGENERATION, 60, healAmount));
+            if (healAmount > 0){
+                if (player.getHealth() < 10 ){
+                    player.addStatusEffect(new StatusEffectInstance(StatusEffects.REGENERATION, 60, healAmount));
+                } else{
+                    player.addStatusEffect(new StatusEffectInstance(StatusEffects.REGENERATION, 60, healAmount-1));
+                }
+            } else {
+                player.addStatusEffect(new StatusEffectInstance(StatusEffects.REGENERATION, 60, healAmount));
+            }
         }
     }
 
