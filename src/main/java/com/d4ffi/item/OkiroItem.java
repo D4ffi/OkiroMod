@@ -163,7 +163,7 @@ public class OkiroItem {
     public static final ItemGroup OKIRO_CARD_GROUP = Registry.register(Registries.ITEM_GROUP,
             new Identifier(Okiro.MOD_ID, "okiro_card_group"),
             FabricItemGroup.builder().displayName(Text.translatable("itemGroup.okiro_card_group")).icon(() ->
-                    new ItemStack(FOOL)).entries(((displayContext, entries) -> {
+                    new ItemStack(cardWithProperties(JUDGEMENT).getItem())).entries(((displayContext, entries) -> {
                 for (Item card : itemGroupCards) {
                     entries.add(cardWithProperties(card));
                 }

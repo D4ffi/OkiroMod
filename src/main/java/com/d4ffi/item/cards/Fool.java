@@ -17,6 +17,8 @@ import java.util.List;
 
 public class Fool extends TarotCardManager {
 
+    static int FOOL_COOLDOWN = 80;
+
     public Fool(Settings settings) {
         super(settings);
     }
@@ -38,12 +40,12 @@ public class Fool extends TarotCardManager {
         if (!player.isOnGround() && !playerManager.isCardOnCooldown(player, Fool.class)){
             if(!player.isCreative()){
                 Vec3d lookDirection = player.getRotationVector();
-                double dash = 1.05;
+                double dash = .90;
                 player.addVelocity(lookDirection.x * dash, 0, lookDirection.z * dash);
                 player.velocityModified = true;
             }
             player.getWorld().playSound(null, player.getBlockPos(), SoundEvents.ENTITY_ARROW_SHOOT, SoundCategory.PLAYERS, 1.0f, 0.7f);
-            playerManager.setCardCooldown(player, Fool.class, 5);
+            playerManager.setCardCooldown(player, Fool.class, FOOL_COOLDOWN);
         }
     }
 }

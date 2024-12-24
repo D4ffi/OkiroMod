@@ -20,7 +20,7 @@ public class Strength extends TarotCardManager {
 
     @Override
     public void activateCard(PlayerEntity player) {
-        player.addStatusEffect(new StatusEffectInstance(StatusEffects.STRENGTH, 60, 0));
+        player.addStatusEffect(new StatusEffectInstance(StatusEffects.STRENGTH, 60, 0, false, false));
     }
 
     @Override

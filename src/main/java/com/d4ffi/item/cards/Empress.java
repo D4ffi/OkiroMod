@@ -63,15 +63,15 @@ public class Empress extends TarotCardManager {
 
             // Check if the location is valid (air or water above it)
             if (isValidTeleportLocation(player, location[0], location[1], location[2])) {
-                spawnTeleportParticles(player, oldpos);
-                teleportPlayerWithEffects(player, location[0], location[1], location[2]);
+                spawnTeleportParticles(player, oldpos, true);
+                teleportPlayerWithEffects(player, location[0], location[1], location[2], true);
             } else {
                 // Check for a valid location in a 3x3 area
                 for (int x = -1; x <= 1; x++) {
                     for (int z = -1; z <= 1; z++) {
                         if (isValidTeleportLocation(player, location[0] + x, location[1], location[2] + z)) {
-                            spawnTeleportParticles(player, oldpos);
-                            teleportPlayerWithEffects(player, location[0] + x, location[1], location[2] + z);
+                            spawnTeleportParticles(player, oldpos, true);
+                            teleportPlayerWithEffects(player, location[0] + x, location[1], location[2] + z, true);
                             return;
                         } else {
                             ServerPlayNetworking.send((ServerPlayerEntity) player, OkiroPackets.EMPRESS_FAILED, PacketByteBufs.empty());
@@ -83,19 +83,19 @@ public class Empress extends TarotCardManager {
         } catch (Exception ignored) {}
     }
 
-    private static boolean isValidTeleportLocation(PlayerEntity player, int x, int y, int z) {
+    public static boolean isValidTeleportLocation(PlayerEntity player, int x, int y, int z) {
         return player.getWorld().getBlockState(new BlockPos(x, y + 1, z)).isAir() ||
                 !player.getWorld().getBlockState(new BlockPos(x, y + 1, z)).isSolidBlock(player.getWorld(), new BlockPos(x, y + 1, z));
     }
 
-    private static void teleportPlayerWithEffects(PlayerEntity player, int x, int y, int z) {
-        spawnTeleportParticles(player, new Vec3d(x + 0.5, y, z + 0.5));
+    private static void teleportPlayerWithEffects(PlayerEntity player, int x, int y, int z, boolean isEmpressOrJudgement) {
+        spawnTeleportParticles(player, new Vec3d(x + 0.5, y, z + 0.5), isEmpressOrJudgement);
         player.teleport(x + 0.5, y + 1, z + 0.5);
         player.getWorld().playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.ENTITY_ENDERMAN_TELEPORT, SoundCategory.PLAYERS, 1.0F, 0.5F);
 
     }
 
-    private static void spawnTeleportParticles(PlayerEntity player, Vec3d pos) {
+    public static void spawnTeleportParticles(PlayerEntity player, Vec3d pos, boolean isEmpressOrJudgement) {
         if (player.getWorld().isClient) return;
 
         ServerWorld world = (ServerWorld) player.getWorld();
@@ -105,7 +105,11 @@ public class Empress extends TarotCardManager {
         double velocityY = random.nextGaussian() * 0.02D;
         double velocityZ = random.nextGaussian() * 0.02D;
 
-        world.spawnParticles(ParticleTypes.SCULK_SOUL, pos.getX(), pos.getY() + 1, pos.getZ(), 108, velocityX, velocityY, velocityZ, 0.1);
+        if (isEmpressOrJudgement){
+            world.spawnParticles(ParticleTypes.SCULK_SOUL, pos.getX(), pos.getY() + 1, pos.getZ(), 108, velocityX, velocityY, velocityZ, 0.1);
+        } else {
+            world.spawnParticles(ParticleTypes.PORTAL, pos.getX(), pos.getY() + 1, pos.getZ(), 108, velocityX, velocityY, velocityZ, 0.1);
+        }
 
     }
 }

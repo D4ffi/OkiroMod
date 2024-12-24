@@ -20,7 +20,7 @@ public class Tower extends TarotCardManager {
 
     @Override
     public void activateCard(PlayerEntity player) {
-        player.addStatusEffect(new StatusEffectInstance(StatusEffects.RESISTANCE, 40, 0));
+        player.addStatusEffect(new StatusEffectInstance(StatusEffects.RESISTANCE, 40, 0, false, false));
     }
 
     @Override
