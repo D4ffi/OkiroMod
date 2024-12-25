@@ -1,8 +1,8 @@
 {
   "credit": "Made with Blockbench",
   "textures": {
-    "0": "okiro:item/deck",
-    "particle": "okiro:item/deck"
+    "0": "okiro_tarot_cards:item/deck",
+    "particle": "okiro_tarot_cards:item/deck"
   },
   "elements": [
     {

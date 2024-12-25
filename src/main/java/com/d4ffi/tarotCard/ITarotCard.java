@@ -1,6 +1,6 @@
 package com.d4ffi.tarotCard;
 
-import com.d4ffi.Okiro;
+import com.d4ffi.OkiroTarotCards;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 
@@ -17,6 +17,6 @@ public interface ITarotCard {
     public void forceDeactivation(PlayerEntity player);
     public default void playerAOE(PlayerEntity player){
         // does nothing by default
-        Okiro.LOGGER.info("AOE not implemented for this card");
+        OkiroTarotCards.LOGGER.info("AOE not implemented for this card");
     }
 }

@@ -1,6 +1,6 @@
 package com.d4ffi.effect;
 
-import com.d4ffi.Okiro;
+import com.d4ffi.OkiroTarotCards;
 import net.minecraft.entity.attribute.EntityAttributeModifier;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.effect.StatusEffect;
@@ -21,7 +21,7 @@ public class OkiroEffect {
                     "c2f5c9c0-8b7a-11eb-8dcd-0242ac130003", -0.25, EntityAttributeModifier.Operation.MULTIPLY_TOTAL));
 
     private static StatusEffect registerStatusEffects(String name, StatusEffect effect) {
-        return Registry.register(Registries.STATUS_EFFECT, new Identifier(Okiro.MOD_ID, name), effect);
+        return Registry.register(Registries.STATUS_EFFECT, new Identifier(OkiroTarotCards.MOD_ID, name), effect);
     }
     public static void registerEffects() {
     }

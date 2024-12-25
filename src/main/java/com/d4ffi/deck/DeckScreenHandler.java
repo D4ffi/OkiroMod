@@ -1,9 +1,8 @@
 package com.d4ffi.deck;
 
-import com.d4ffi.Okiro;
+import com.d4ffi.OkiroTarotCards;
 import com.d4ffi.item.Deck;
 import com.d4ffi.tarotCard.TarotCardManager;
-import io.netty.buffer.Unpooled;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.Inventory;
@@ -32,7 +31,7 @@ public class DeckScreenHandler extends ScreenHandler {
     }
 
     public DeckScreenHandler(int synchronizationID, PlayerInventory playerInventory, ItemStack deckStack) {
-        super(Okiro.CONTAINER_TYPE, synchronizationID);
+        super(OkiroTarotCards.CONTAINER_TYPE, synchronizationID);
         this.deckStack = deckStack;
 
         if (deckStack.getItem() instanceof Deck) {

@@ -1,28 +1,28 @@
 {
 	"schemaVersion": 1,
-	"id": "okiro",
+	"id": "okiro_tarot_cards",
 	"version": "${version}",
-	"name": "Okiro",
-	"description": "This is an example description! Tell everyone what your mod is about!",
+	"name": "Okiro's Tarot Cards",
+	"description": "Search and Discover Tarot Cards in Minecraft!",
 	"authors": [
-		"Me!"
+		"Daffi"
 	],
 	"contact": {
 		"homepage": "https://fabricmc.net/",
 		"sources": "https://github.com/FabricMC/fabric-example-mod"
 	},
 	"license": "CC0-1.0",
-	"icon": "assets/okiro/icon.png",
+	"icon": "template_icon.png",
 	"environment": "*",
 	"entrypoints": {
 		"main": [
-			"com.d4ffi.Okiro"
+			"com.d4ffi.OkiroTarotCards"
 		],
 		"fabric-datagen": [
 			"com.d4ffi.OkiroDataGenerator"
 		],
 		"client": [
-			"com.d4ffi.OkiroClient"
+			"com.d4ffi.OkiroTarotCardsClient"
 		]
 	},
 	"mixins": [

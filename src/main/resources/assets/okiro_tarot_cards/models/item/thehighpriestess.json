@@ -1,8 +1,8 @@
 {
 	"credit": "Made with Blockbench",
 	"textures": {
-		"0": "okiro:item/wheeloffortune",
-		"particle": "okiro:item/wheeloffortune"
+		"0": "okiro_tarot_cards:item/thehighpriestess",
+		"particle": "okiro_tarot_cards:item/thehighpriestess"
 	},
 	"elements": [
 		{

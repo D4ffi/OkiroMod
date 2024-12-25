@@ -1,8 +1,8 @@
 {
 	"credit": "Made with Blockbench",
 	"textures": {
-		"0": "okiro:item/themagician",
-		"particle": "okiro:item/themagician"
+		"0": "okiro_tarot_cards:item/judgement",
+		"particle": "okiro_tarot_cards:item/judgement"
 	},
 	"elements": [
 		{

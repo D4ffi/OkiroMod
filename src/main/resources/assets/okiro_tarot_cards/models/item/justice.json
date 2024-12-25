@@ -1,8 +1,8 @@
 {
 	"credit": "Made with Blockbench",
 	"textures": {
-		"0": "okiro:item/death",
-		"particle": "okiro:item/death"
+		"0": "okiro_tarot_cards:item/justice",
+		"particle": "okiro_tarot_cards:item/justice"
 	},
 	"elements": [
 		{

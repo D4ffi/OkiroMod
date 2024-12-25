@@ -1,6 +1,6 @@
 package com.d4ffi.mixin;
 
-import com.d4ffi.Okiro;
+import com.d4ffi.OkiroTarotCards;
 import com.d4ffi.item.Deck;
 import com.d4ffi.item.cards.Lovers;
 import com.d4ffi.item.cards.Temperance;
@@ -14,7 +14,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.nbt.NbtElement;
 import net.minecraft.nbt.NbtList;
-import net.minecraft.screen.ScreenHandler;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
@@ -94,7 +93,7 @@ public class CheckInventory implements IPlayerManager {
     public void returnLostHearts(PlayerEntity player) {
         try {
             if (isTemperanceActive) {
-                Okiro.LOGGER.info("hearts from temperance: {}", getLostHeartsFromTemperance(player));
+                OkiroTarotCards.LOGGER.info("hearts from temperance: {}", getLostHeartsFromTemperance(player));
                 Objects.requireNonNull(player.getAttributeInstance(EntityAttributes.GENERIC_MAX_HEALTH)).setBaseValue(Objects.requireNonNull(player.getAttributeInstance(EntityAttributes.GENERIC_MAX_HEALTH)).getBaseValue() + getLostHeartsFromTemperance(player));
                 setLostHeartsFromTemperance(player, 0);
             }
@@ -103,7 +102,7 @@ public class CheckInventory implements IPlayerManager {
             setLostHearts(player, 0);
 
         } catch (NullPointerException e) {
-            Okiro.LOGGER.error("Error returning lost hearts: {}", String.valueOf(e));
+            OkiroTarotCards.LOGGER.error("Error returning lost hearts: {}", String.valueOf(e));
         }
     }
 

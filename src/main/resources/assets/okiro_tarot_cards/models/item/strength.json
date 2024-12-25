@@ -1,8 +1,8 @@
 {
 	"credit": "Made with Blockbench",
 	"textures": {
-		"0": "okiro:item/thehighpriestess",
-		"particle": "okiro:item/thehighpriestess"
+		"0": "okiro_tarot_cards:item/strength",
+		"particle": "okiro_tarot_cards:item/strength"
 	},
 	"elements": [
 		{

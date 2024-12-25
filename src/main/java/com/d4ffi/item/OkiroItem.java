@@ -1,6 +1,6 @@
 package com.d4ffi.item;
 
-import com.d4ffi.Okiro;
+import com.d4ffi.OkiroTarotCards;
 import com.d4ffi.item.cards.*;
 import com.d4ffi.tarotCard.TarotConfigManager;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
@@ -23,7 +23,7 @@ public class OkiroItem {
 
     static List<Object> activeCards = configManager.getActiveCards();
 
-    public static final Item DECK = Registry.register(Registries.ITEM, new Identifier(Okiro.MOD_ID, "deck"),
+    public static final Item DECK = Registry.register(Registries.ITEM, new Identifier(OkiroTarotCards.MOD_ID, "deck"),
             new Deck(new FabricItemSettings().maxCount(1).rarity(Rarity.EPIC)));
 
     public static Item FOOL;
@@ -144,7 +144,7 @@ public class OkiroItem {
                     itemGroupCards.add(WORLD);
                     break;
                 default:
-                    Okiro.LOGGER.warn("Unknown card: {}", cardName);
+                    OkiroTarotCards.LOGGER.warn("Unknown card: {}", cardName);
                     break;
             }
         }
@@ -152,16 +152,16 @@ public class OkiroItem {
 
 
     private static Item registerItem(String name, Item item) {
-        return Registry.register(Registries.ITEM, new Identifier(Okiro.MOD_ID, name), item);
+        return Registry.register(Registries.ITEM, new Identifier(OkiroTarotCards.MOD_ID, name), item);
     }
 
     public static void registerItems() {
-        Okiro.LOGGER.info("Registering OKIRO ITEMS . . .");
+        OkiroTarotCards.LOGGER.info("Registering OKIRO ITEMS . . .");
         InstanceCards();
     }
 
     public static final ItemGroup OKIRO_CARD_GROUP = Registry.register(Registries.ITEM_GROUP,
-            new Identifier(Okiro.MOD_ID, "okiro_card_group"),
+            new Identifier(OkiroTarotCards.MOD_ID, "okiro_card_group"),
             FabricItemGroup.builder().displayName(Text.translatable("itemGroup.okiro_card_group")).icon(() ->
                     new ItemStack(cardWithProperties(JUDGEMENT).getItem())).entries(((displayContext, entries) -> {
                 for (Item card : itemGroupCards) {
@@ -171,7 +171,7 @@ public class OkiroItem {
             })).build());
 
     public static void registerItemGroups() {
-        Okiro.LOGGER.info("Registering OKIRO ITEM GROUPS . . .");
+        OkiroTarotCards.LOGGER.info("Registering OKIRO ITEM GROUPS . . .");
     }
 
     public static ItemStack cardWithProperties(Item card){

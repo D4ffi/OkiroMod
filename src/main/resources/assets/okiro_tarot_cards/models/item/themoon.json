@@ -1,8 +1,8 @@
 {
 	"credit": "Made with Blockbench",
 	"textures": {
-		"0": "okiro:item/thehangedman",
-		"particle": "okiro:item/thehangedman"
+		"0": "okiro_tarot_cards:item/themoon",
+		"particle": "okiro_tarot_cards:item/themoon"
 	},
 	"elements": [
 		{

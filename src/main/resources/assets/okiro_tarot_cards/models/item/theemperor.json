@@ -1,8 +1,8 @@
 {
 	"credit": "Made with Blockbench",
 	"textures": {
-		"0": "okiro:item/thefool",
-		"particle": "okiro:item/thefool"
+		"0": "okiro_tarot_cards:item/theemperor",
+		"particle": "okiro_tarot_cards:item/theemperor"
 	},
 	"elements": [
 		{

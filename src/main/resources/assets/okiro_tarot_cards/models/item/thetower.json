@@ -1,8 +1,8 @@
 {
 	"credit": "Made with Blockbench",
 	"textures": {
-		"0": "okiro:item/thetower",
-		"particle": "okiro:item/thetower"
+		"0": "okiro_tarot_cards:item/thetower",
+		"particle": "okiro_tarot_cards:item/thetower"
 	},
 	"elements": [
 		{

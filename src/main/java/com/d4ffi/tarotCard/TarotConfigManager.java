@@ -1,8 +1,6 @@
 package com.d4ffi.tarotCard;
 
-import com.d4ffi.Okiro;
-import com.d4ffi.effect.OkiroEffect;
-import com.d4ffi.item.cards.Empress;
+import com.d4ffi.OkiroTarotCards;
 import com.moandjiezana.toml.Toml;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.entity.effect.StatusEffect;
@@ -31,7 +29,7 @@ public class TarotConfigManager {
             loadconfig();
             loadStaticConfig();
         } catch (IOException e) {
-            Okiro.LOGGER.info("Error loading config file || {}", e.getMessage());
+            OkiroTarotCards.LOGGER.info("Error loading config file || {}", e.getMessage());
         }
     }
 
@@ -50,7 +48,7 @@ public class TarotConfigManager {
             try {
                 configFile.createNewFile();
             } catch (Exception e) {
-                Okiro.LOGGER.info("Error creating config file || {}", e.getMessage());
+                OkiroTarotCards.LOGGER.info("Error creating config file || {}", e.getMessage());
             }
         }
 

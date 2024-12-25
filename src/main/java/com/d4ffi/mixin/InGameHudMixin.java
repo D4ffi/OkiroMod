@@ -1,6 +1,6 @@
 package com.d4ffi.mixin;
 
-import com.d4ffi.Okiro;
+import com.d4ffi.OkiroTarotCards;
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawContext;
@@ -19,7 +19,7 @@ import static com.d4ffi.effect.OkiroEffect.FREEZE;
 @Mixin(InGameHud.class)
 public class InGameHudMixin {
     @Unique
-    private static final Identifier FROZEN_OVERLAY = new Identifier(Okiro.MOD_ID, "textures/misc/frozen.png");
+    private static final Identifier FROZEN_OVERLAY = new Identifier(OkiroTarotCards.MOD_ID, "textures/misc/frozen.png");
 
     @Shadow
     @Final

@@ -1,8 +1,8 @@
 {
 	"credit": "Made with Blockbench",
 	"textures": {
-		"0": "okiro:item/thehermit",
-		"particle": "okiro:item/thehermit"
+		"0": "okiro_tarot_cards:item/death",
+		"particle": "okiro_tarot_cards:item/death"
 	},
 	"elements": [
 		{

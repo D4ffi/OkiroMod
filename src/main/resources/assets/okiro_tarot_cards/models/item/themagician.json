@@ -1,8 +1,8 @@
 {
 	"credit": "Made with Blockbench",
 	"textures": {
-		"0": "okiro:item/themoon",
-		"particle": "okiro:item/themoon"
+		"0": "okiro_tarot_cards:item/themagician",
+		"particle": "okiro_tarot_cards:item/themagician"
 	},
 	"elements": [
 		{

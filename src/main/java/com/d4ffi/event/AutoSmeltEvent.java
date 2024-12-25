@@ -1,6 +1,6 @@
 package com.d4ffi.event;
 
-import com.d4ffi.Okiro;
+import com.d4ffi.OkiroTarotCards;
 import com.d4ffi.item.cards.Sun;
 import com.d4ffi.tarotCard.IPlayerManager;
 import com.d4ffi.tarotCard.TarotConfigManager;
@@ -31,7 +31,7 @@ public class AutoSmeltEvent implements PlayerBlockBreakEvents.Before {
         IPlayerManager moddedPlayer = (IPlayerManager) playerEntity;
         if (moddedPlayer.getActiveCard(Sun.class)){
             String blockName = blockState.getBlock().toString().replace("Block{", "").replace("}", "");
-            Okiro.LOGGER.info("Block: {}", blockName);
+            OkiroTarotCards.LOGGER.info("Block: {}", blockName);
             autoSmelt(blockState, blockName, world, blockPos, playerEntity);
         }
         return true;

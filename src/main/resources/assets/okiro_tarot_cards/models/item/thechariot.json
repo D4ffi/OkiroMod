@@ -1,8 +1,8 @@
 {
 	"credit": "Made with Blockbench",
 	"textures": {
-		"0": "okiro:item/thesun",
-		"particle": "okiro:item/thesun"
+		"0": "okiro_tarot_cards:item/thechariot",
+		"particle": "okiro_tarot_cards:item/thechariot"
 	},
 	"elements": [
 		{

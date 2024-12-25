@@ -1,5 +1,6 @@
 package com.d4ffi.deck;
 
+import com.d4ffi.OkiroTarotCards;
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.screen.ingame.HandledScreen;
@@ -10,7 +11,7 @@ import net.minecraft.util.Identifier;
 
 public class DeckScreen extends HandledScreen<DeckScreenHandler> {
 
-    private static final Identifier TEXTURE = new Identifier("okiro", "textures/gui/okiro-container.png");
+    private static final Identifier TEXTURE = new Identifier(OkiroTarotCards.MOD_ID, "textures/gui/okiro-container.png");
     private final int rows = 2;
     private final int columns = 11;
 
