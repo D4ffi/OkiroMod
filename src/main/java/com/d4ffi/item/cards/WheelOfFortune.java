@@ -20,7 +20,7 @@ public class WheelOfFortune extends TarotCardManager {
 
     @Override
     public void activateCard(PlayerEntity player) {
-        player.addStatusEffect(new StatusEffectInstance(StatusEffects.LUCK, 60, 2));
+        player.addStatusEffect(new StatusEffectInstance(StatusEffects.LUCK, 60, 2, false, false, false));
     }
 
     @Override

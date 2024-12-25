@@ -10,6 +10,8 @@ public interface IPlayerManager {
 
     Set<ItemStack> activeCards = new HashSet<>();
 
+    Set<ItemStack> cardsInDeck = new HashSet<>();
+
     void checkInventory(PlayerEntity player);
     float getLostHearts(PlayerEntity player);
     void setLostHearts(PlayerEntity player, float lostHealth);

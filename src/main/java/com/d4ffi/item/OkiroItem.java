@@ -167,16 +167,17 @@ public class OkiroItem {
                 for (Item card : itemGroupCards) {
                     entries.add(cardWithProperties(card));
                 }
+                entries.add(DECK);
             })).build());
 
     public static void registerItemGroups() {
         Okiro.LOGGER.info("Registering OKIRO ITEM GROUPS . . .");
     }
 
-    private static ItemStack cardWithProperties(Item card){
+    public static ItemStack cardWithProperties(Item card){
         ItemStack stack = new ItemStack(card);
         stack.getOrCreateNbt().putBoolean("active", true);
-        stack.getOrCreateNbt().putInt("mode", 0);
+        //stack.getOrCreateNbt().putInt("mode", 0);
         return stack;
     }
 }

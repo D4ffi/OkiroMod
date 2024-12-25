@@ -21,7 +21,7 @@ public class Devil extends TarotCardManager {
     @Override
     public void activateCard(PlayerEntity player) {
         // Dar resistencia al fuego al jugador
-        player.addStatusEffect(new StatusEffectInstance(StatusEffects.FIRE_RESISTANCE, 60, 0, true, true, true));
+        player.addStatusEffect(new StatusEffectInstance(StatusEffects.FIRE_RESISTANCE, 60, 0, false, false, false));
     }
 
     @Override

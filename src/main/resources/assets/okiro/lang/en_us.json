@@ -21,14 +21,16 @@
   "item.okiro.thetower": "The Tower",
   "item.okiro.theworld": "The World",
   "item.okiro.wheeloffortune": "Wheel of Fortune",
+  "item.okiro.deck": "Deck",
   "itemGroup.okiro_card_group": "Okiro Cards",
   "effect.okiro.moon_grace": "Moon's Grace",
+  "effect.okiro.freeze": "Freeze",
   "message.okiro.empress_failed": "Location is obstructed",
   "message.okiro.insufficient_xp": "Cant cast right now...",
   "key.categories.okiro": "Okiro",
   "key.okiro.card": "Use Ability",
   "key.okiro.fool_dash": "Use Fool's Dash",
-  "item.okiro.deck" : "Deck",
+  "container.okiro.deck" : "Deck",
 
 
   "tooltip.lore.death": "§7Trapped inside, the §8Wither's §7aura prevails",

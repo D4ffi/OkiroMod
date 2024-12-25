@@ -20,7 +20,7 @@ public class Sun extends TarotCardManager {
 
     @Override
     public void activateCard(PlayerEntity player) {
-        player.addStatusEffect(new StatusEffectInstance(StatusEffects.HASTE, 60, 2));
+        player.addStatusEffect(new StatusEffectInstance(StatusEffects.HASTE, 60, 2, false, false));
     }
 
     @Override

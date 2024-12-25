@@ -20,7 +20,7 @@ public class Chariot extends TarotCardManager {
 
     @Override
     public void activateCard(PlayerEntity player) {
-        player.addStatusEffect(new StatusEffectInstance(StatusEffects.SPEED, 60, 1, false, false));
+        player.addStatusEffect(new StatusEffectInstance(StatusEffects.SPEED, 60, 1, false, false, false));
     }
 
     @Override

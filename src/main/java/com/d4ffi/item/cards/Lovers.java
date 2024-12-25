@@ -43,12 +43,12 @@ public class Lovers extends TarotCardManager {
         } else {
             if (healAmount > 0){
                 if (player.getHealth() < 10 ){
-                    player.addStatusEffect(new StatusEffectInstance(StatusEffects.REGENERATION, 60, healAmount, false, false));
+                    player.addStatusEffect(new StatusEffectInstance(StatusEffects.REGENERATION, 60, healAmount, false, false, false));
                 } else{
-                    player.addStatusEffect(new StatusEffectInstance(StatusEffects.REGENERATION, 60, healAmount-1, false, false));
+                    player.addStatusEffect(new StatusEffectInstance(StatusEffects.REGENERATION, 60, healAmount-1, false, false, false));
                 }
             } else {
-                player.addStatusEffect(new StatusEffectInstance(StatusEffects.REGENERATION, 60, healAmount, false, false));
+                player.addStatusEffect(new StatusEffectInstance(StatusEffects.REGENERATION, 60, healAmount, false, false, false));
             }
         }
     }

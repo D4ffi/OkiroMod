@@ -35,8 +35,8 @@ public class Moon extends TarotCardManager {
     @Override
     public void activateCard(PlayerEntity player) {
         if (player.isSubmergedInWater()){
-            player.addStatusEffect(new StatusEffectInstance(StatusEffects.CONDUIT_POWER, 60, 0, false, false));
-            player.addStatusEffect(new StatusEffectInstance(MOON_GRACE, 60, 0, false, false));
+            player.addStatusEffect(new StatusEffectInstance(StatusEffects.CONDUIT_POWER, 60, 0, false, false, false));
+            player.addStatusEffect(new StatusEffectInstance(MOON_GRACE, 60, 0, false, false, false));
         }
     }
 }
