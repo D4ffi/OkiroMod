@@ -1,5 +1,6 @@
 package com.d4ffi;
 
+import com.d4ffi.datagen.OkiroTcLootTables;
 import com.d4ffi.deck.DeckScreenHandler;
 import com.d4ffi.effect.OkiroEffect;
 import com.d4ffi.item.OkiroItem;
@@ -32,7 +33,8 @@ public class OkiroTarotCards implements ModInitializer {
 		configManager.initHighPriestessNegateEffects();
 		OkiroItem.registerItems();
 		OkiroEffect.registerEffects();
-		OkiroEventRegister.registerEvents();
+		OkiroTcEventRegister.registerEvents();
+		OkiroTcLootTables.modifyLootTables();
 		Client2Server.registerPackets();
 
 		LOGGER.info("Have a great day, Fabric World!");

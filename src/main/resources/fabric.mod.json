@@ -19,7 +19,7 @@
 			"com.d4ffi.OkiroTarotCards"
 		],
 		"fabric-datagen": [
-			"com.d4ffi.OkiroDataGenerator"
+			"com.d4ffi.OkiroTcDataGenerator"
 		],
 		"client": [
 			"com.d4ffi.OkiroTarotCardsClient"

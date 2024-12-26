@@ -12,7 +12,7 @@ import net.fabricmc.fabric.api.event.player.UseEntityCallback;
 import net.minecraft.entity.passive.VillagerEntity;
 import net.minecraft.util.ActionResult;
 
-public class OkiroEventRegister {
+public class OkiroTcEventRegister {
 
     public static void registerEvents() {
         AttackEntityCallback.EVENT.register(new AttackEvent());
