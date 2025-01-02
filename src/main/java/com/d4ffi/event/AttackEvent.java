@@ -5,6 +5,7 @@ import com.d4ffi.item.cards.Death;
 import com.d4ffi.item.cards.Hierophant;
 import com.d4ffi.item.cards.Magician;
 import com.d4ffi.tarotCard.IPlayerManager;
+import com.d4ffi.tarotCard.TarotConfigManager;
 import net.fabricmc.fabric.api.event.player.AttackEntityCallback;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
@@ -18,6 +19,12 @@ import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
 public class AttackEvent implements AttackEntityCallback {
+
+    static TarotConfigManager configManager = new TarotConfigManager();
+
+    private static final int MAGICIAN_BURN_TIME = configManager.getMagicianBurnTime();
+    private static final int DEATH_WITHER_TIME = configManager.getDeathWitherTime();
+
     @Override
     public ActionResult interact(PlayerEntity playerEntity, World world, Hand hand, Entity entity, @Nullable EntityHitResult entityHitResult) {
 
@@ -34,7 +41,7 @@ public class AttackEvent implements AttackEntityCallback {
     private void deathEffect(IPlayerManager player, Entity entity) {
         if (player.getActiveCard(Death.class)) {
             if (entity instanceof LivingEntity) {
-                ((LivingEntity) entity).addStatusEffect(new StatusEffectInstance(StatusEffects.WITHER, 100, 1));
+                ((LivingEntity) entity).addStatusEffect(new StatusEffectInstance(StatusEffects.WITHER, DEATH_WITHER_TIME, 1));
             }
         }
     }
@@ -42,7 +49,7 @@ public class AttackEvent implements AttackEntityCallback {
     private void magicianEffect(IPlayerManager player, Entity entity) {
         if (player.getActiveCard(Magician.class)) {
             if (entity instanceof LivingEntity) {
-                entity.setOnFireFor(5);
+                entity.setOnFireFor(MAGICIAN_BURN_TIME);
             }
         }
     }

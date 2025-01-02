@@ -184,7 +184,12 @@ public class CheckInventory implements IPlayerManager {
     @Unique
     private void cardActivationProcess(ItemStack stack){
         activeCards.add(stack);
-        if (((TarotCardManager) stack.getItem()).isCardActive(stack) && !(stack.getItem() instanceof Lovers)) {
+
+        if (((TarotCardManager) stack.getItem()).isCardActive(stack)) {
+
+            if (stack.getItem() instanceof Lovers) {
+                return;
+            }
 
             if (stack.getItem() instanceof Temperance) {
                 if (!isTemperanceActive) {

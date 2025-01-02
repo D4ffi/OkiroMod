@@ -19,7 +19,6 @@ import java.util.List;
 public class Lovers extends TarotCardManager {
 
     TarotConfigManager configManager = new TarotConfigManager();
-    boolean canHealInArea = configManager.canLoversHealInRadius();
     int healAmount = configManager.getLoversHealAmount();
 
     public Lovers(Settings settings) {
@@ -38,30 +37,9 @@ public class Lovers extends TarotCardManager {
 
     @Override
     public void activateCard(PlayerEntity player) {
-        if (canHealInArea){
-            playerAOE(player);
-        } else {
-            if (healAmount > 0){
-                if (player.getHealth() < 10 ){
-                    player.addStatusEffect(new StatusEffectInstance(StatusEffects.REGENERATION, 60, healAmount, false, false, false));
-                } else{
-                    player.addStatusEffect(new StatusEffectInstance(StatusEffects.REGENERATION, 60, healAmount-1, false, false, false));
-                }
-            } else {
-                player.addStatusEffect(new StatusEffectInstance(StatusEffects.REGENERATION, 60, healAmount, false, false, false));
-            }
-        }
-    }
-
-    @Override
-    public void playerAOE(PlayerEntity player) {
-        Box box = new Box(player.getBlockPos()).expand(5);
-        List<Entity> entities = player.getWorld().getEntitiesByClass(Entity.class, box, entity -> true); // Include all entities
-
-        for (Entity entity : entities) {
-            if (entity instanceof LivingEntity) {
-                ((LivingEntity) entity).addStatusEffect(new StatusEffectInstance(StatusEffects.REGENERATION, 80, healAmount, false, false));
-            }
+        if (player.getHealth() < player.getMaxHealth()) {
+            player.addStatusEffect(new StatusEffectInstance(StatusEffects.REGENERATION, 200, healAmount, true, false, false));
         }
     }
 }
+

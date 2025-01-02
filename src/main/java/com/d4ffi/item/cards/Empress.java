@@ -1,7 +1,9 @@
 package com.d4ffi.item.cards;
 
 import com.d4ffi.network.OkiroPackets;
+import com.d4ffi.tarotCard.IPlayerManager;
 import com.d4ffi.tarotCard.TarotCardManager;
+import com.d4ffi.tarotCard.TarotConfigManager;
 import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.minecraft.client.item.TooltipContext;
@@ -26,6 +28,10 @@ import java.util.Objects;
 import java.util.Random;
 
 public class Empress extends TarotCardManager {
+
+    static TarotConfigManager configManager = new TarotConfigManager();
+
+    private static final int COOLDOWN_TICKS = configManager.getEmpressCooldown();
 
     public Empress(Settings settings) {
         super(settings);
@@ -56,7 +62,6 @@ public class Empress extends TarotCardManager {
     }
 
     public static void activateKeyBindAbility(PlayerEntity player) {
-
         try {
             Vec3d oldpos = player.getPos();
             int[] location = Objects.requireNonNull(player.getMainHandStack().getNbt()).getIntArray("Location");
@@ -89,8 +94,13 @@ public class Empress extends TarotCardManager {
     }
 
     private static void teleportPlayerWithEffects(PlayerEntity player, int x, int y, int z, boolean isEmpressOrJudgement) {
-        spawnTeleportParticles(player, new Vec3d(x + 0.5, y, z + 0.5), isEmpressOrJudgement);
+
+        IPlayerManager playerManager = (IPlayerManager) player;
+
         player.teleport(x + 0.5, y + 1, z + 0.5);
+        playerManager.setCardCooldown(player, Empress.class, COOLDOWN_TICKS);
+        System.out.println("Cooldown Ticks: " + COOLDOWN_TICKS);
+        spawnTeleportParticles(player, new Vec3d(x + 0.5, y, z + 0.5), isEmpressOrJudgement);
         player.getWorld().playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.ENTITY_ENDERMAN_TELEPORT, SoundCategory.PLAYERS, 1.0F, 0.5F);
 
     }

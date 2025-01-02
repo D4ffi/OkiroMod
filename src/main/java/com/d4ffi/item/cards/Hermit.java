@@ -1,5 +1,6 @@
 package com.d4ffi.item.cards;
 
+import com.d4ffi.tarotCard.IPlayerManager;
 import com.d4ffi.tarotCard.TarotCardManager;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.player.PlayerEntity;
@@ -35,7 +36,8 @@ public class Hermit extends TarotCardManager {
             player.addVelocity(lookDirection.x * boost, lookDirection.y * boost, lookDirection.z * boost);
             player.velocityModified = true;
 
-            player.getItemCooldownManager().set(player.getMainHandStack().getItem(), 200);
+            IPlayerManager playerManager = (IPlayerManager) player;
+            playerManager.setCardCooldown(player, Hermit.class, 100);
         }
     }
 }

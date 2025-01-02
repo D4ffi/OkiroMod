@@ -1,6 +1,7 @@
 package com.d4ffi.item.cards;
 
 import com.d4ffi.tarotCard.TarotCardManager;
+import com.d4ffi.tarotCard.TarotConfigManager;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
@@ -14,13 +15,17 @@ import java.util.List;
 
 public class Chariot extends TarotCardManager {
 
+    static  TarotConfigManager configManager = new TarotConfigManager();
+
+    private static final int CHARIOT_SPEED = configManager.getChariotSpeed();
+
     public Chariot(Settings settings) {
         super(settings);
     }
 
     @Override
     public void activateCard(PlayerEntity player) {
-        player.addStatusEffect(new StatusEffectInstance(StatusEffects.SPEED, 60, 1, false, false, false));
+        player.addStatusEffect(new StatusEffectInstance(StatusEffects.SPEED, 60, CHARIOT_SPEED, false, false, false));
     }
 
     @Override

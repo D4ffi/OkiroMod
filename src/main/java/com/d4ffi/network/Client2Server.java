@@ -24,16 +24,17 @@ public class Client2Server {
     }
 
     private static void getCardToActivate(PlayerEntity player) {
-        for (Item card : OkiroItem.itemGroupCards) {
-            if (player.getMainHandStack().getItem().getClass().equals(card.getClass()) || player.getOffHandStack().getItem().getClass().equals(card.getClass())) {
-                if (card.getClass().equals(Empress.class)){
-                    Empress.activateKeyBindAbility(player);
-                    break;
-                }
-                if (card.getClass().equals(Hermit.class)){
-                    Hermit.activateKeyBindAbility(player);
-                    break;
-                }
+
+        IPlayerManager playerManager = (IPlayerManager) player;
+
+        if (player.getMainHandStack().getItem().getClass().equals(Empress.class)) {
+            if (!playerManager.isCardOnCooldown(player, Empress.class)) {
+                Empress.activateKeyBindAbility(player);
+            }
+
+        } else if (player.getMainHandStack().getItem().getClass().equals(Hermit.class)) {
+            if (!playerManager.isCardOnCooldown(player, Hermit.class)) {
+                Hermit.activateKeyBindAbility(player);
             }
         }
     }

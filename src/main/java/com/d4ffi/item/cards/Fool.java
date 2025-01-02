@@ -2,6 +2,7 @@ package com.d4ffi.item.cards;
 
 import com.d4ffi.tarotCard.IPlayerManager;
 import com.d4ffi.tarotCard.TarotCardManager;
+import com.d4ffi.tarotCard.TarotConfigManager;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
@@ -16,7 +17,9 @@ import java.util.List;
 
 public class Fool extends TarotCardManager {
 
-    static int FOOL_COOLDOWN = 80;
+    static TarotConfigManager configManager = new TarotConfigManager();
+
+    static int FOOL_COOLDOWN = configManager.getFoolCooldown();
 
     public Fool(Settings settings) {
         super(settings);

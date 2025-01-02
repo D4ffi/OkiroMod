@@ -15,7 +15,7 @@ import java.util.*;
 
 public class TarotConfigManager {
 
-    private static final String CONFIG_FILE_NAME = "okiro_config.toml";
+    private static final String CONFIG_FILE_NAME = "okiro-cards-config.toml";
     private Toml config;
     private static Toml serverConfig;
     private static FileWriter fileWriter;
@@ -71,60 +71,46 @@ public class TarotConfigManager {
                     "updateTicks = 20");
 
             writeCommentedConfig(writer,
-                    "Only the following cards will be active in the game",
-                    "by default all 22 cards are active",
-                    "activeCards = [\"thefool\",\"themagician\",\"thehighpriestess\",\"theempress\",\"theemperor\",\"thehierophant\",\"thelovers\",\"thechariot\",\"strength\",\"thehermit\",\"wheeloffortune\",\"justice\",\"thehangedman\",\"death\",\"temperance\",\"thedevil\",\"thetower\",\"thestar\",\"themoon\",\"thesun\",\"judgement\",\"theworld\"]");
+                    "Select if you wish yo usea global spawn chance for all cards",
+                    "by default is set to false, all cards have a spawn chance similar to armor trims",
+                    "example:",
+                    "Ancient cities --> 1.2% chance to spawn special cards and a 5% chance to spawn common cards",
+                    "useCustomSpawnChance = false");
 
             writeCommentedConfig(writer,
-                    "Amount of time that The Fool can copy another card ability",
-                    "by default is set to 6000",
-                    "theFoolCopyTime = 6000");
+                    "Set the chance for common cards to spawn in the world",
+                    "by default is set to 15%,",
+                    "specialSpawnChance = 0.15");
 
             writeCommentedConfig(writer,
-                    "Amount of time that The Magician burns the target",
-                    "by default is set to 60",
-                    "theMagicianBurnTime = 60");
+                    "Amount of cooldown between Fool's dashes",
+                    "by default is set to 80 ticks",
+                    "foolColdown = 80");
 
             writeCommentedConfig(writer,
-                    "List of effects that The High Priestess can negate",
-                    "by default is set to [\"minecraft:poison\", \"minecraft:wither\",\"minecraft:slowness\"]",
-                    "theHighPriestessNegateEffects = [\"minecraft:poison\", \"minecraft:wither\",\"minecraft:slowness\",\"minecraft:blindness\",\"minecraft:darkness\",\"minecraft:nausea\",\"minecraft:hunger\",\"minecraft:weakness\",\"minecraft:levitation\",\"minecraft:glowing\",\"minecraft:unluck\"]");
+                    "Amount of time in seconds that The Magician burns the target",
+                    "by default is set to 5",
+                    "theMagicianBurnTime = 5");
+
+            writeCommentedConfig(writer,
+                    "Amount of time in Ticks that Death withers the target",
+                    "by default is set to 100",
+                    "deathWithersFor = 100");
 
             writeCommentedConfig(writer,
                     "Amount of cooldown that The Empress has between uses",
-                    "by default is set to 1200",
-                    "theEmpressCooldown = 1200");
+                    "by default is set to 40",
+                    "theEmpressCooldown = 40");
 
             writeCommentedConfig(writer,
-                    "Does the Emperor can peace the piglins?",
-                    "by default is set to true",
-                    "theEmperorPeacePiglins = true");
-
-            writeCommentedConfig(writer,
-                    "Does the Emperor can give Hero of the Village to the player? and how strong is the effect?",
-                    "by default is set to true and 3",
-                    "theEmperorHeroOfTheVillage = true",
-                    "theEmperorHeroOfTheVillageLevel = 3");
-
-            writeCommentedConfig(writer,
-                    "Does the lovers can regenerate nearby players and friendly mobs?",
-                    "by default is set to false",
-                    "theLoversHeal = false");
-
-            writeCommentedConfig(writer,
-                    "Sets the amount of health that the lovers can regenerate",
-                    "by default is set to 1",
-                    "theLoversHealAmount = 1");
-
-            writeCommentedConfig(writer,
-                    "Chariot boost only works on paths?",
-                    "by default is set to false",
-                    "theChariotBoostOnlyPaths = false");
+                    "How Strong is the regeneration effect that lovers grant",
+                    "by default is set to 1 --> Regeneration 2",
+                    "loversRegeneration = 1");
 
             writeCommentedConfig(writer,
                     "Chariot speed level",
-                    "by default is set to 1",
-                    "theChariotSpeedLevel = 1");
+                    "by default is set to Speed 1 --> 0",
+                    "theChariotSpeedLevel = 0");
 
             writeCommentedConfig(writer,
                     "Strength level given by the strength card",
@@ -134,7 +120,7 @@ public class TarotConfigManager {
             writeCommentedConfig(writer,
                     "Max health that temperance can grant to its user",
                     "by default is set to 20",
-                    "temperanceMaxHealth = 20");
+                    "temperanceMaxHealth = 60");
 
             writeCommentedConfig(writer,
                     "Sets the slowness effect that The World will emit",
@@ -162,12 +148,36 @@ public class TarotConfigManager {
         return config.getLong("updateTicks", 20L).intValue();
     }
 
-    public List<Object> getActiveCards() {
-        return config.getList("activeCards");
+    public float getSpawnChance() {
+        return config.getDouble("spawnChance", 0.20).floatValue();
     }
 
-    public boolean canLoversHealInRadius() {
-        return config.getBoolean("theLoversHeal", false);
+    public boolean getSpecialSpawnChance() {
+        return config.getBoolean("useCustomSpawnChance", false);
+    }
+
+    public int getFoolCooldown() {
+        return config.getLong("foolColdown", 80L).intValue();
+    }
+
+    public int getLoversHealAmount() {
+        return config.getLong("loversRegeneration", 1L).intValue();
+    }
+
+    public int getEmpressCooldown() {
+        return config.getLong("theEmpressCooldown", 40L).intValue();
+    }
+
+    public int getMagicianBurnTime() {
+        return config.getLong("theMagicianBurnTime", 5L).intValue();
+    }
+
+    public int getDeathWitherTime() {
+        return config.getLong("deathWithersFor", 100L).intValue();
+    }
+
+    public int getChariotSpeed() {
+        return config.getLong("theChariotSpeedLevel", 0L).intValue();
     }
 
     public void initHighPriestessNegateEffects() {
@@ -187,17 +197,13 @@ public class TarotConfigManager {
         return highPriestessNegateEffects;
     }
 
-    public void initTurnToGoldItems(){
+    public void initTurnToGoldItems() {
         turnToGoldItems.put(Items.CARROT, Items.GOLDEN_CARROT);
         turnToGoldItems.put(Items.APPLE, Items.GOLDEN_APPLE);
     }
 
     public HashMap<Item, Item> getTurnToGoldItems() {
         return turnToGoldItems;
-    }
-
-    public int getLoversHealAmount() {
-        return config.getLong("theLoversHealAmount", 1L).intValue();
     }
 
     public float getTemperanceMaxHealth() {

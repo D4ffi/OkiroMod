@@ -33,6 +33,7 @@ public class Emperor extends TarotCardManager {
         tooltip.add(Text.translatable("tooltip.lore.theemperor"));
         tooltip.add(Text.literal(" "));
         tooltip.add(Text.translatable("tooltip.description.theemperor"));
+        tooltip.add(Text.translatable("tooltip.description.theemperor2"));
 
         super.appendTooltip(stack, world, tooltip, context);
     }
