@@ -41,6 +41,9 @@ public class Empress extends TarotCardManager {
     public ActionResult useOnBlock(ItemUsageContext context) {
         if (!context.getWorld().isClient && Objects.requireNonNull(context.getPlayer()).isSneaky()) {
             if (context.getSide() == Direction.UP){
+
+                    Objects.requireNonNull(context.getPlayer()).sendMessage(Text.literal("Location Mark: " + context.getBlockPos().getX() + ", " + context.getBlockPos().getY() + ", " + context.getBlockPos().getZ()), true);
+
                 context.getPlayer().getMainHandStack().getOrCreateNbt()
                         .putIntArray("Location", new int[]{
                                 context.getBlockPos().getX(),
@@ -48,6 +51,7 @@ public class Empress extends TarotCardManager {
                                 context.getBlockPos().getZ()});
             }
         }
+
         return super.useOnBlock(context);
     }
 
@@ -55,8 +59,16 @@ public class Empress extends TarotCardManager {
     public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
 
         tooltip.add(Text.translatable("tooltip.lore.theempress"));
+        if (stack.hasNbt() && stack.getNbt().contains("Location")) {
+            int[] location = stack.getNbt().getIntArray("Location");
+            if (location.length == 3) {
+                tooltip.add(Text.literal("§bSaved location: " + location[0] + ", " + location[1] + ", " + location[2]));
+            }
+        }
         tooltip.add(Text.literal(" "));
         tooltip.add(Text.translatable("tooltip.description.theempress"));
+
+
 
         super.appendTooltip(stack, world, tooltip, context);
     }
@@ -98,8 +110,10 @@ public class Empress extends TarotCardManager {
         IPlayerManager playerManager = (IPlayerManager) player;
 
         player.teleport(x + 0.5, y + 1, z + 0.5);
+        if (isEmpressOrJudgement) {
+            player.sendMessage(Text.of("Teleported to " + x + ", " + y + ", " + z), true);
+        }
         playerManager.setCardCooldown(player, Empress.class, COOLDOWN_TICKS);
-        System.out.println("Cooldown Ticks: " + COOLDOWN_TICKS);
         spawnTeleportParticles(player, new Vec3d(x + 0.5, y, z + 0.5), isEmpressOrJudgement);
         player.getWorld().playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.ENTITY_ENDERMAN_TELEPORT, SoundCategory.PLAYERS, 1.0F, 0.5F);
 
