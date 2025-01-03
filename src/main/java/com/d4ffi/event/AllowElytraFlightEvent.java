@@ -6,20 +6,18 @@ import net.fabricmc.fabric.api.entity.event.v1.EntityElytraEvents;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 
-public class ElytraFlightEvent implements EntityElytraEvents.Custom {
+public class AllowElytraFlightEvent implements EntityElytraEvents.Allow {
 
     @Override
-    public boolean useCustomElytra(LivingEntity entity, boolean tickElytra) {
+    public boolean allowElytraFlight(LivingEntity entity) {
         if (entity instanceof PlayerEntity player) {
             // Manejar solo este jugador específico
             IPlayerManager playerManager = (IPlayerManager) player;
             if (playerManager.getActiveCard(Hermit.class)) {
-                return true; // Aplicar vuelo personalizado solo para este jugador si tiene la carta
+                return true; // Permitir vuelo solo para este jugador si tiene la carta
             }
-            return false; // No aplicar vuelo personalizado para este jugador si no tiene la carta
+            return false; // No permitir vuelo para este jugador si no tiene la carta
         }
         return false; // No es un jugador
     }
-
 }
-

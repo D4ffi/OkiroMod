@@ -1,24 +1,18 @@
 package com.d4ffi.tarotCard;
 
 import com.d4ffi.OkiroTarotCards;
-import com.moandjiezana.toml.Toml;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.item.Item;
 import net.minecraft.item.Items;
-
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.util.*;
 
 public class TarotConfigManager {
 
     private static final String CONFIG_FILE_NAME = "okiro-cards-config.toml";
-    private Toml config;
-    private static Toml serverConfig;
-    private static FileWriter fileWriter;
+    Map<String, String> config = new HashMap<>();
     private static final HashMap<String, String> autoSmeltBlocks = new HashMap<>();
     private static final HashMap<Item, Item> turnToGoldItems = new HashMap<>();
     private static final Set<StatusEffect> highPriestessNegateEffects = new HashSet<>();
@@ -27,19 +21,11 @@ public class TarotConfigManager {
     public TarotConfigManager() {
         try {
             loadconfig();
-            loadStaticConfig();
         } catch (IOException e) {
             OkiroTarotCards.LOGGER.info("Error loading config file || {}", e.getMessage());
         }
     }
 
-    public static void loadStaticConfig() {
-        File configFile = FabricLoader.getInstance().getConfigDir().resolve(CONFIG_FILE_NAME).toFile();
-
-        // assumes there is a config file
-
-        serverConfig = new Toml().read(configFile);
-    }
 
     public void loadconfig() throws IOException {
         File configFile = FabricLoader.getInstance().getConfigDir().resolve(CONFIG_FILE_NAME).toFile();
@@ -47,16 +33,32 @@ public class TarotConfigManager {
         if (!configFile.exists()) {
             try {
                 configFile.createNewFile();
+                writeDefaultConfig(configFile);
             } catch (Exception e) {
                 OkiroTarotCards.LOGGER.info("Error creating config file || {}", e.getMessage());
             }
         }
 
-        config = new Toml().read(configFile);
+        config = parseTomlFile(configFile.getAbsolutePath());
+    }
 
-        if (config.isEmpty()) {
-            writeDefaultConfig(configFile);
+    public static Map<String, String> parseTomlFile(String filePath) throws IOException {
+        Map<String, String> configMap = new HashMap<>();
+        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                line = line.trim();
+                if (!line.isEmpty() && !line.startsWith("#")) {
+                    String[] parts = line.split("=", 2);
+                    if (parts.length == 2) {
+                        String key = parts[0].trim();
+                        String value = parts[1].trim().replaceAll("\"", "");
+                        configMap.put(key, value);
+                    }
+                }
+            }
         }
+        return configMap;
     }
 
     public static void writeDefaultConfig(File configFile) throws IOException {
@@ -145,39 +147,48 @@ public class TarotConfigManager {
     }
 
     public int getUpdateTicks() {
-        return config.getLong("updateTicks", 20L).intValue();
+
+        return Integer.parseInt(config.getOrDefault("updateTicks", "20"));
     }
 
     public float getSpawnChance() {
-        return config.getDouble("spawnChance", 0.20).floatValue();
+
+        return Float.parseFloat(config.getOrDefault("spawnChance", "0.20"));
     }
 
     public boolean getSpecialSpawnChance() {
-        return config.getBoolean("useCustomSpawnChance", false);
+
+        return Boolean.parseBoolean(config.getOrDefault("useCustomSpawnChance", "false"));
     }
 
     public int getFoolCooldown() {
-        return config.getLong("foolColdown", 80L).intValue();
+
+        return Integer.parseInt(config.getOrDefault("foolColdown", "80"));
     }
 
     public int getLoversHealAmount() {
-        return config.getLong("loversRegeneration", 1L).intValue();
+
+        return Integer.parseInt(config.getOrDefault("loversRegeneration", "1"));
     }
 
     public int getEmpressCooldown() {
-        return config.getLong("theEmpressCooldown", 40L).intValue();
+
+        return Integer.parseInt(config.getOrDefault("theEmpressCooldown", "40"));
     }
 
     public int getMagicianBurnTime() {
-        return config.getLong("theMagicianBurnTime", 5L).intValue();
+
+        return Integer.parseInt(config.getOrDefault("theMagicianBurnTime", "5"));
     }
 
     public int getDeathWitherTime() {
-        return config.getLong("deathWithersFor", 100L).intValue();
+
+        return Integer.parseInt(config.getOrDefault("deathWithersFor", "100"));
     }
 
     public int getChariotSpeed() {
-        return config.getLong("theChariotSpeedLevel", 0L).intValue();
+
+        return Integer.parseInt(config.getOrDefault("theChariotSpeedLevel", "0"));
     }
 
     public void initHighPriestessNegateEffects() {
@@ -207,7 +218,8 @@ public class TarotConfigManager {
     }
 
     public float getTemperanceMaxHealth() {
-        return config.getLong("temperanceMaxHealth", 20L);
+
+        return Float.parseFloat(config.getOrDefault("temperanceMaxHealth", "20"));
     }
 
     public void initAutoSmeltBlocks() {
@@ -245,6 +257,7 @@ public class TarotConfigManager {
     }
 
     public int getWorldSlowness() {
-        return config.getLong("theWorldSlowness", 3L).intValue();
+
+        return Integer.parseInt(config.getOrDefault("theWorldSlowness", "3"));
     }
 }
