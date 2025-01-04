@@ -31,7 +31,6 @@ public class AutoSmeltEvent implements PlayerBlockBreakEvents.Before {
         IPlayerManager moddedPlayer = (IPlayerManager) playerEntity;
         if (moddedPlayer.getActiveCard(Sun.class)){
             String blockName = blockState.getBlock().toString().replace("Block{", "").replace("}", "");
-            OkiroTarotCards.LOGGER.info("Block: {}", blockName);
             autoSmelt(blockState, blockName, world, blockPos, playerEntity);
         }
         return true;

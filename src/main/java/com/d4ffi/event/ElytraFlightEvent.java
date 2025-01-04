@@ -11,14 +11,11 @@ public class ElytraFlightEvent implements EntityElytraEvents.Custom {
     @Override
     public boolean useCustomElytra(LivingEntity entity, boolean tickElytra) {
         if (entity instanceof PlayerEntity player) {
-            // Manejar solo este jugador específico
             IPlayerManager playerManager = (IPlayerManager) player;
-            if (playerManager.getActiveCard(Hermit.class)) {
-                return true; // Aplicar vuelo personalizado solo para este jugador si tiene la carta
-            }
-            return false; // No aplicar vuelo personalizado para este jugador si no tiene la carta
+
+            return playerManager.getActiveCard(Hermit.class);
         }
-        return false; // No es un jugador
+        return false;
     }
 
 }

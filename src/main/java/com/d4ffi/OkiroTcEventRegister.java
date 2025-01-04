@@ -30,7 +30,6 @@ public class OkiroTcEventRegister {
             return ActionResult.PASS;
         });
         EntityElytraEvents.CUSTOM.register(new ElytraFlightEvent());
-        EntityElytraEvents.ALLOW.register(new AllowElytraFlightEvent());
         ServerTickEvents.END_SERVER_TICK.register(server -> {
             server.getPlayerManager().getPlayerList().forEach(player -> {
                 IPlayerManager playerManager = (IPlayerManager) player;

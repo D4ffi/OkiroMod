@@ -28,8 +28,6 @@ public class CheckInventory implements IPlayerManager {
     @Unique
     PlayerEntity player = (PlayerEntity) (Object) this;
     @Unique
-    boolean serverSide = !player.getWorld().isClient;
-    @Unique
     TarotConfigManager configManager = new TarotConfigManager();
     @Unique
     int tickupdate = configManager.getUpdateTicks();
@@ -42,7 +40,6 @@ public class CheckInventory implements IPlayerManager {
 
     @Inject(at = @At("HEAD"), method = "tick")
     public void checkInventory(CallbackInfo ci) {
-        if (serverSide) {
             tick++;
             if (tick >= tickupdate) {
                 checkInventory(player);
@@ -53,7 +50,6 @@ public class CheckInventory implements IPlayerManager {
                 activateLovers(player);
                 tick = 0;
             }
-        }
     }
 
     @Override
@@ -93,7 +89,6 @@ public class CheckInventory implements IPlayerManager {
     public void returnLostHearts(PlayerEntity player) {
         try {
             if (isTemperanceActive) {
-                OkiroTarotCards.LOGGER.info("hearts from temperance: {}", getLostHeartsFromTemperance(player));
                 Objects.requireNonNull(player.getAttributeInstance(EntityAttributes.GENERIC_MAX_HEALTH)).setBaseValue(Objects.requireNonNull(player.getAttributeInstance(EntityAttributes.GENERIC_MAX_HEALTH)).getBaseValue() + getLostHeartsFromTemperance(player));
                 setLostHeartsFromTemperance(player, 0);
             }
